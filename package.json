@@ -4,7 +4,7 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www",
     "lint": "eslint ."
