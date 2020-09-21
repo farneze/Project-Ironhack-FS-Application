@@ -2,10 +2,13 @@
   "name": "basicauth",
   "version": "0.0.0",
   "private": true,
+  "main": "app.js",
+  "engines": {
+    "node": "12.18.4"
+  },
   "scripts": {
     "start": "nodemon ./bin/www",
     "dev": "nodemon ./bin/www",
-    "dev:debug": "DEBUG=basicauth* npm run dev",
     "dev-windows": "nodemon ./bin/www",
     "lint": "eslint ."
   },
@@ -13,6 +16,7 @@
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.4",
+    "debug": "^4.1.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.1",

@@ -1,0 +1,103 @@
+2020-09-21T19:01:33.000000+00:00 app[api]: Build succeeded
+2020-09-21T19:01:34.126905+00:00 heroku[web.1]: Starting process with command `npm start`
+2020-09-21T19:01:36.616340+00:00 app[web.1]: 
+2020-09-21T19:01:36.616357+00:00 app[web.1]: > basicauth@0.0.0 start /app
+2020-09-21T19:01:36.616358+00:00 app[web.1]: > node ./bin/www
+2020-09-21T19:01:36.616358+00:00 app[web.1]: 
+2020-09-21T19:01:36.701984+00:00 app[web.1]: internal/modules/cjs/loader.js:968
+2020-09-21T19:01:36.701986+00:00 app[web.1]: throw err;
+2020-09-21T19:01:36.701986+00:00 app[web.1]: ^
+2020-09-21T19:01:36.701987+00:00 app[web.1]: 
+2020-09-21T19:01:36.701987+00:00 app[web.1]: Error: Cannot find module 'debug'
+2020-09-21T19:01:36.701988+00:00 app[web.1]: Require stack:
+2020-09-21T19:01:36.701988+00:00 app[web.1]: - /app/node_modules/finalhandler/index.js
+2020-09-21T19:01:36.701988+00:00 app[web.1]: - /app/node_modules/express/lib/application.js
+2020-09-21T19:01:36.701989+00:00 app[web.1]: - /app/node_modules/express/lib/express.js
+2020-09-21T19:01:36.701989+00:00 app[web.1]: - /app/node_modules/express/index.js
+2020-09-21T19:01:36.701989+00:00 app[web.1]: - /app/app.js
+2020-09-21T19:01:36.701990+00:00 app[web.1]: - /app/bin/www
+2020-09-21T19:01:36.701990+00:00 app[web.1]: at Function.Module._resolveFilename (internal/modules/cjs/loader.js:965:15)
+2020-09-21T19:01:36.701991+00:00 app[web.1]: at Function.Module._load (internal/modules/cjs/loader.js:841:27)
+2020-09-21T19:01:36.701991+00:00 app[web.1]: at Module.require (internal/modules/cjs/loader.js:1025:19)
+2020-09-21T19:01:36.701992+00:00 app[web.1]: at require (internal/modules/cjs/helpers.js:72:18)
+2020-09-21T19:01:36.701992+00:00 app[web.1]: at Object.<anonymous> (/app/node_modules/finalhandler/index.js:14:13)
+2020-09-21T19:01:36.701993+00:00 app[web.1]: at Module._compile (internal/modules/cjs/loader.js:1137:30)
+2020-09-21T19:01:36.702000+00:00 app[web.1]: at Object.Module._extensions..js (internal/modules/cjs/loader.js:1157:10)
+2020-09-21T19:01:36.702001+00:00 app[web.1]: at Module.load (internal/modules/cjs/loader.js:985:32)
+2020-09-21T19:01:36.702001+00:00 app[web.1]: at Function.Module._load (internal/modules/cjs/loader.js:878:14)
+2020-09-21T19:01:36.702002+00:00 app[web.1]: at Module.require (internal/modules/cjs/loader.js:1025:19) {
+2020-09-21T19:01:36.702002+00:00 app[web.1]: code: 'MODULE_NOT_FOUND',
+2020-09-21T19:01:36.702003+00:00 app[web.1]: requireStack: [
+2020-09-21T19:01:36.702003+00:00 app[web.1]: '/app/node_modules/finalhandler/index.js',
+2020-09-21T19:01:36.702003+00:00 app[web.1]: '/app/node_modules/express/lib/application.js',
+2020-09-21T19:01:36.702004+00:00 app[web.1]: '/app/node_modules/express/lib/express.js',
+2020-09-21T19:01:36.702004+00:00 app[web.1]: '/app/node_modules/express/index.js',
+2020-09-21T19:01:36.702004+00:00 app[web.1]: '/app/app.js',
+2020-09-21T19:01:36.702005+00:00 app[web.1]: '/app/bin/www'
+2020-09-21T19:01:36.702005+00:00 app[web.1]: ]
+2020-09-21T19:01:36.702006+00:00 app[web.1]: }
+2020-09-21T19:01:36.709669+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2020-09-21T19:01:36.709982+00:00 app[web.1]: npm ERR! errno 1
+2020-09-21T19:01:36.712248+00:00 app[web.1]: npm ERR! basicauth@0.0.0 start: `node ./bin/www`
+2020-09-21T19:01:36.712354+00:00 app[web.1]: npm ERR! Exit status 1
+2020-09-21T19:01:36.712459+00:00 app[web.1]: npm ERR!
+2020-09-21T19:01:36.712537+00:00 app[web.1]: npm ERR! Failed at the basicauth@0.0.0 start script.
+2020-09-21T19:01:36.712627+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2020-09-21T19:01:36.718676+00:00 app[web.1]: 
+2020-09-21T19:01:36.718840+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2020-09-21T19:01:36.718918+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2020-09-21T19_01_36_713Z-debug.log
+2020-09-21T19:01:36.810725+00:00 heroku[web.1]: Process exited with status 1
+2020-09-21T19:01:36.866198+00:00 heroku[web.1]: State changed from starting to crashed
+2020-09-21T19:01:36.868459+00:00 heroku[web.1]: State changed from crashed to starting
+2020-09-21T19:01:39.883651+00:00 heroku[web.1]: Starting process with command `npm start`
+2020-09-21T19:01:42.236252+00:00 app[web.1]: 
+2020-09-21T19:01:42.236279+00:00 app[web.1]: > basicauth@0.0.0 start /app
+2020-09-21T19:01:42.236279+00:00 app[web.1]: > node ./bin/www
+2020-09-21T19:01:42.236279+00:00 app[web.1]: 
+2020-09-21T19:01:42.316438+00:00 app[web.1]: internal/modules/cjs/loader.js:968
+2020-09-21T19:01:42.316440+00:00 app[web.1]: throw err;
+2020-09-21T19:01:42.316441+00:00 app[web.1]: ^
+2020-09-21T19:01:42.316441+00:00 app[web.1]: 
+2020-09-21T19:01:42.316441+00:00 app[web.1]: Error: Cannot find module 'debug'
+2020-09-21T19:01:42.316442+00:00 app[web.1]: Require stack:
+2020-09-21T19:01:42.316442+00:00 app[web.1]: - /app/node_modules/finalhandler/index.js
+2020-09-21T19:01:42.316442+00:00 app[web.1]: - /app/node_modules/express/lib/application.js
+2020-09-21T19:01:42.316442+00:00 app[web.1]: - /app/node_modules/express/lib/express.js
+2020-09-21T19:01:42.316443+00:00 app[web.1]: - /app/node_modules/express/index.js
+2020-09-21T19:01:42.316443+00:00 app[web.1]: - /app/app.js
+2020-09-21T19:01:42.316443+00:00 app[web.1]: - /app/bin/www
+2020-09-21T19:01:42.316444+00:00 app[web.1]: at Function.Module._resolveFilename (internal/modules/cjs/loader.js:965:15)
+2020-09-21T19:01:42.316444+00:00 app[web.1]: at Function.Module._load (internal/modules/cjs/loader.js:841:27)
+2020-09-21T19:01:42.316445+00:00 app[web.1]: at Module.require (internal/modules/cjs/loader.js:1025:19)
+2020-09-21T19:01:42.316445+00:00 app[web.1]: at require (internal/modules/cjs/helpers.js:72:18)
+2020-09-21T19:01:42.316445+00:00 app[web.1]: at Object.<anonymous> (/app/node_modules/finalhandler/index.js:14:13)
+2020-09-21T19:01:42.316446+00:00 app[web.1]: at Module._compile (internal/modules/cjs/loader.js:1137:30)
+2020-09-21T19:01:42.316446+00:00 app[web.1]: at Object.Module._extensions..js (internal/modules/cjs/loader.js:1157:10)
+2020-09-21T19:01:42.316446+00:00 app[web.1]: at Module.load (internal/modules/cjs/loader.js:985:32)
+2020-09-21T19:01:42.316447+00:00 app[web.1]: at Function.Module._load (internal/modules/cjs/loader.js:878:14)
+2020-09-21T19:01:42.316447+00:00 app[web.1]: at Module.require (internal/modules/cjs/loader.js:1025:19) {
+2020-09-21T19:01:42.316448+00:00 app[web.1]: code: 'MODULE_NOT_FOUND',
+2020-09-21T19:01:42.316448+00:00 app[web.1]: requireStack: [
+2020-09-21T19:01:42.316449+00:00 app[web.1]: '/app/node_modules/finalhandler/index.js',
+2020-09-21T19:01:42.316449+00:00 app[web.1]: '/app/node_modules/express/lib/application.js',
+2020-09-21T19:01:42.316450+00:00 app[web.1]: '/app/node_modules/express/lib/express.js',
+2020-09-21T19:01:42.316450+00:00 app[web.1]: '/app/node_modules/express/index.js',
+2020-09-21T19:01:42.316450+00:00 app[web.1]: '/app/app.js',
+2020-09-21T19:01:42.316451+00:00 app[web.1]: '/app/bin/www'
+2020-09-21T19:01:42.316451+00:00 app[web.1]: ]
+2020-09-21T19:01:42.316451+00:00 app[web.1]: }
+2020-09-21T19:01:42.324978+00:00 app[web.1]: npm ERR! code ELIFECYCLE
+2020-09-21T19:01:42.325346+00:00 app[web.1]: npm ERR! errno 1
+2020-09-21T19:01:42.329050+00:00 app[web.1]: npm ERR! basicauth@0.0.0 start: `node ./bin/www`
+2020-09-21T19:01:42.329250+00:00 app[web.1]: npm ERR! Exit status 1
+2020-09-21T19:01:42.329539+00:00 app[web.1]: npm ERR!
+2020-09-21T19:01:42.329628+00:00 app[web.1]: npm ERR! Failed at the basicauth@0.0.0 start script.
+2020-09-21T19:01:42.329723+00:00 app[web.1]: npm ERR! This is probably not a problem with npm. There is likely additional logging output above.
+2020-09-21T19:01:42.337773+00:00 app[web.1]: 
+2020-09-21T19:01:42.338050+00:00 app[web.1]: npm ERR! A complete log of this run can be found in:
+2020-09-21T19:01:42.338205+00:00 app[web.1]: npm ERR!     /app/.npm/_logs/2020-09-21T19_01_42_331Z-debug.log
+2020-09-21T19:01:42.394944+00:00 heroku[web.1]: Process exited with status 1
+2020-09-21T19:01:42.427959+00:00 heroku[web.1]: State changed from starting to crashed
+2020-09-21T19:03:32.472032+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/" host=ih-2nd-project.herokuapp.com request_id=47b135fa-a24b-4479-ae51-a0d4399b21c8 fwd="177.170.248.43" dyno= connect= service= status=503 bytes= protocol=https
+2020-09-21T19:03:33.390226+00:00 heroku[router]: at=error code=H10 desc="App crashed" method=GET path="/favicon.ico" host=ih-2nd-project.herokuapp.com request_id=dc82ea0f-cbbf-4b78-9474-98a4513ccef1 fwd="177.170.248.43" dyno= connect= service= status=503 bytes= protocol=https
+Terminate batch job (Y/N)? 
