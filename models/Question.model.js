@@ -6,7 +6,7 @@ const questSchema = new Schema(
   {
     subject : {
         type: String,
-      required: [true, "Email is required."],
+      required: [true, "Subject is required."],
       unique: true,
       lowercase: true,
       trim: true,
@@ -14,7 +14,7 @@ const questSchema = new Schema(
 
     class : {
         type: String,
-      required: [true, "Email is required."],
+      required: [true, "Class is required."],
       unique: true,
       lowercase: true,
       trim: true,
@@ -22,7 +22,7 @@ const questSchema = new Schema(
 
     question : {
         type: String,
-      required: [true, "Email is required."],
+      required: [true, "Question is required."],
       unique: true,
       lowercase: true,
       trim: true,
@@ -30,7 +30,7 @@ const questSchema = new Schema(
 
     correctAnswer : {
         type: String,
-      required: [true, "Email is required."],
+      required: [true, "Correct answer is required."],
       unique: true,
       lowercase: true,
       trim: true,
@@ -41,7 +41,7 @@ const questSchema = new Schema(
         type: [String],
       trim: true,
       // Sintaxe de mensagem de erro customizada pra quando a regra do Schema não for satisfeita
-      required: [true, "Username is required."],
+      required: [true, "Wrong answers are required."],
       unique: true,
     },
   },
