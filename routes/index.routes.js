@@ -118,4 +118,10 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+router.get("/addnewquestion", (req, res) => {
+  res.render("addQuestion")
+});
+
+
+
 module.exports = router;

@@ -3,11 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "main": "app.js",
-  "engines": {
-    "node": "12.18.4"
-  },
+  
   "scripts": {
-    "start": "nodemon ./bin/www",
+    "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www",
     "lint": "eslint ."
