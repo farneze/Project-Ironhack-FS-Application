@@ -10,7 +10,7 @@ const User = require("../models/User.model");
 
 /* GET home page */
 router.get("/", (req, res) =>
-  res.render("index", { title: "App created with Ironhack generator 🚀" })
+  res.render("index", { title: "Meu saiti 🚀" })
 );
 
 // Servir o formulario de cadastro de usuario
@@ -115,7 +115,7 @@ router.get("/profile", (req, res) => {
 // GET Logout - Rota para destruir a sessao do usuario logado
 router.get("/logout", (req, res) => {
   req.session.destroy();
-  res.redirect("/login");
+  res.redirect("/");
 });
 
 module.exports = router;
