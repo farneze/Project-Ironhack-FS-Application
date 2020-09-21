@@ -1,21 +1,17 @@
-{{! views/auth/login.hbs }}
+  
+{{!-- View do formulario de criacao de usuario --}}
 
+{{!-- Dispara uma requisicao POST para a rota /signup quando o usuario clicar no botao "Salvar" --}}
 <form action="/login" method="POST">
-  <div>
-    <label for="username">Username:</label>
-    <input type="text" name="username">
-  </div>
 
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" name="password">
-  </div>
+  <label>Email</label>
+  <input type="email" name="email">
 
+  <label>Password</label>
+  <input type="password" name="password">
+
+  <button type="submit">Login</button>
   {{#if errorMessage}}
-    <div class="error-message">{{errorMessage}}</div>
+  {{> errorPartial errorMessage}}
   {{/if}}
-
-  <div>
-    <button>Log in</button>
-  </div>
 </form>

@@ -1,28 +1,27 @@
-{{! views/auth/signup.hbs }}
+{{!-- View do formulario de criacao de usuario --}}
 
-<h2>Signup</h2>
-
-<form action="/signup" method="POST" id="form-container">
-  <div>
-    <label for="username">Username</label>
-    <input id="username" type="text" name="username">
-  </div>
-
-  <div>
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password">
-  </div>
-
-  {{#if errorMessage}}
-    <div class="error-message">{{errorMessage}}</div>
+{{!-- Dispara uma requisicao POST para a rota /signup quando o usuario clicar no botao "Salvar" --}}
+<form action="/signup" method="POST">
+  <label>Username</label>
+  <input type="text" name="username">
+  {{!-- Mensagem de erro para validacao do formulario --}}
+  {{#if username}}
+  {{> errorPartial username}}
+  {{/if}}
+  <label>Email</label>
+  <input type="email" name="email">
+  {{#if email}}
+  {{> errorPartial email}}
   {{/if}}
 
-  <div>
-    <button>Create account</button>
-  </div>
+  <label>Password</label>
+  <input type="password" name="password">
+  {{#if password}}
+  {{> errorPartial password}}
+  {{/if}}
 
-  <p class="account-message">
-    Do you already have an account?
-    <a href="/login">Login</a>
-  </p>
+  <button type="submit">Salvar</button>
+  {{#if errorMessage}}
+  {{> errorPartial errorMessage}}
+  {{/if}}
 </form>
