@@ -9,7 +9,6 @@
   "scripts": {
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
-    "dev:debug": "DEBUG=basicauth* npm run dev",
     "dev-windows": "nodemon ./bin/www",
     "lint": "eslint ."
   },
