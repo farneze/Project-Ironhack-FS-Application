@@ -3,7 +3,7 @@ const path = require("path");
 const express = require("express");
 const createError = require("http-errors");
 const logger = require("morgan");
-const favicon = require("serve-favicon");
+// const favicon = require("serve-favicon");
 
 const cookieParser = require("cookie-parser");
 const hbs = require("hbs");
@@ -30,7 +30,7 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "hbs");
 
 app.use(express.static(path.join(__dirname, "public")));
-app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
+// app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 hbs.registerPartials(__dirname + "/views/partials");
 app.use(logger("dev"));
 app.use(express.json());
