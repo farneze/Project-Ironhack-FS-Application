@@ -1,27 +1,41 @@
 {{!-- View do formulario de criacao de usuario --}}
 
 {{!-- Dispara uma requisicao POST para a rota /signup quando o usuario clicar no botao "Salvar" --}}
-<form action="/signup" method="POST">
-  <label>Username</label>
-  <input type="text" name="username">
+<form class="form-signin" action="/signup" method="POST">
+  <label class="sr-only">Username</label>
+  <input type="text" name="username" class="form-control" placeholder="Username">
   {{!-- Mensagem de erro para validacao do formulario --}}
   {{#if username}}
   {{> errorPartial username}}
   {{/if}}
-  <label>Email</label>
-  <input type="email" name="email">
+
+  <label class="sr-only">Nickname</label>
+  <input type="text" name="nickname" class="form-control" placeholder="Nickname">
+
+  <label class="sr-only">Email</label>
+  <input type="email" name="email" class="form-control" placeholder="Email">
   {{#if email}}
   {{> errorPartial email}}
   {{/if}}
 
-  <label>Password</label>
-  <input type="password" name="password">
+  <label class="sr-only">Password</label>
+  <input type="password" name="password" class="form-control" placeholder="Password">
   {{#if password}}
   {{> errorPartial password}}
   {{/if}}
 
-  <button type="submit">Salvar</button>
+  <button type="submit">Submit</button>
   {{#if errorMessage}}
   {{> errorPartial errorMessage}}
   {{/if}}
 </form>
+
+<form action="/signup" method="POST">
+  <label>Username</label>
+  <input type="text" name="username">
+  <label>Nickname</label>
+  <input type="text" name="nickname">
+  <label>Email</label>
+  <input type="email" name="email">
+  <label>Password</label>
+  <input type="password" name="password" >
