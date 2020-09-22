@@ -7,11 +7,11 @@ const passport = require("passport");
 
 // Importar model de usuario
 const User = require("../models/User.model");
+const Subject = require("../models/Subjects.model");
+// const User = require("../models/User.model");
 
 /* GET home page */
-router.get("/", (req, res) =>
-  res.render("index", { title: "Meu saiti 🚀" })
-);
+router.get("/", (req, res) => res.render("index", { title: "Meu saiti 🚀" }));
 
 // Servir o formulario de cadastro de usuario
 router.get("/signup", (req, res) => {
@@ -74,7 +74,9 @@ router.post("/signup", async (req, res) => {
     });
 
     // Redireciona para o formulario novamente
-    res.redirect("/signup");
+    // res.redirect("/signup");
+    res.redirect(307, "/login");
+
     console.log(result);
   } catch (err) {
     console.error(err);
@@ -119,9 +121,78 @@ router.get("/logout", (req, res) => {
 });
 
 router.get("/addnewquestion", (req, res) => {
-  res.render("addQuestion")
+  res.render("addQuestion");
 });
 
+router.get("/listsubjects", async (req, res) => {
+  const subject = await Subject.find({}, { subject: 1, _id: 0 }).exec();
+  const classs = await Subject.find({}, { classs: 1, _id: 0 }).exec();
+  const topic = await Subject.find({}, { topic: 1, _id: 0 }).exec();
 
+  console.log(subject);
+  console.log(classs);
+  console.log(topic);
+});
+
+router.get("/addsubjects", async (req, res) => {
+  const result = await Subject.create(
+    { subject: "Biologia", classs: "TemaBio1", topic: "TopicoTemaBio11" },
+    { subject: "Biologia", classs: "TemaBio1", topic: "TopicoTemaBio12" },
+    { subject: "Biologia", classs: "TemaBio2", topic: "TopicoTemaBio21" },
+    { subject: "Biologia", classs: "TemaBio2", topic: "TopicoTemaBio22" },
+    { subject: "História", classs: "TemaHist1", topic: "TopicoTemaHist11" },
+    { subject: "História", classs: "TemaHist1", topic: "TopicoTemaHist12" },
+    { subject: "História", classs: "TemaHist2", topic: "TopicoTemaHist21" },
+    { subject: "História", classs: "TemaHist2", topic: "TopicoTemaHist22" }
+  );
+});
+
+// router.post("/addnewsubjects", (req, res) => {
+//   // Extrair informacoes recebidas da requisicao http que veio do navegador
+//   const { subject, classs, topic } = req.body;
+
+//   const errors = {};
+
+//   if (!subject) {
+//     errors.subject = "Subject is necessary";
+//   }
+//   if (!classs) {
+//     errors.classs = "Class is necessary";
+//   }
+//   if (!topic) {
+//     errors.topic = "Topic is necessary";
+//   }
+
+//   // Se o objeto errors tiver propriedades (chaves), retorne as mensagens de erro
+//   if (Object.keys(errors).length) {
+//     res.render("addnewsubjects", errors);
+//   }
+
+//   try {
+
+//     console.log("Hashed password => ", hashedPassword);
+
+//     const result = await Subject.create({
+//       subject,
+//       classs,
+//       topic,
+//     });
+
+//     res.redirect("addnewsubjects");
+
+//     console.log(result);
+//   } catch (err) {
+//     console.error(err);
+//     // Mensagem de erro para exibir erros de validacao do Schema do Mongoose
+//     if (err instanceof mongoose.Error.ValidationError) {
+//       res.status(500).render("auth/signup", { errorMessage: err.message });
+//     } else if (err.code === 11000) {
+//       res.status(500).render("auth/signup", {
+//         errorMessage:
+//           "Username and email need to be unique. Either username or email is already used.",
+//       });
+//     }
+//   }
+// });
 
 module.exports = router;
