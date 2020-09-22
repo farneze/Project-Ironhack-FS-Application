@@ -1,22 +1,10 @@
-  
-{{#if this}}
+<section class="jumbotron text-center">
 <h2>Welcome, {{ username }}!</h2>
-<p>This is your profile page my friend!</p>
+<h5>This is your profile page {{ nickname }}!</h5>
+</section>
+<div class="w-25 container d-flex flex-column align-content-center justify-content-center">
+  <a href="/addnewquestion" class="pb-2 mb-2 btn btn-info" role="button">Write a brand new question</a>
+  <a href="/listsubjects" class="pb-2 mb-2 btn btn-info" role="button">Show Subjects</a>
+  <a href="/addnewsubjects" class="pb-2 mb-2 btn btn-info" role="button">Add Subjects</a>
+</div>
 
-
-  <a href="/profile" class="btn btn-info" role="button">Reload the page</a>
-  <a href="/logout" class="btn btn-info" role="button">Logout</a>
-  <a href="/addnewquestion" class="btn btn-info" role="button">Write a brand new question</a>
-  <a href="/listsubjects" class="btn btn-info" role="button">Show Subjects</a>
-  <a href="/addsubjects" class="btn btn-info" role="button">Add Subjects</a>
-
-{{else}}
-<p>Still no logged in user, sorry!</p>
-{{/if}}
-
-<script>
-function relocate_home()
-{
-     location.href = "www.yoursite.com";
-} 
-</script>

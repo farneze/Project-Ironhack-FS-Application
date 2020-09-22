@@ -23,10 +23,16 @@ const userSchema = new Schema(
     },
     // add password property here
     // Senha
+
     passwordHash: {
       type: String,
       required: [true, "Password is required."],
     },
+
+    nickname: { type: String, trim: true },
+    friends: { type: [String], trim: true },
+    userTopics: { type: [String], trim: true },
+    userQuestions: { type: [String], trim: true },
   },
   {
     timestamps: true,

@@ -24,7 +24,7 @@ router.post("/signup", async (req, res) => {
   console.log(req.body);
 
   // Extrair informacoes recebidas da requisicao http que veio do navegador
-  const { username, email, password } = req.body;
+  const { username, nickname, email, password } = req.body;
 
   const errors = {};
   // Validacao de nome de usuario: é obrigatório, tem que ser do tipo string e não pode ter mais de 50 caracteres
@@ -72,10 +72,14 @@ router.post("/signup", async (req, res) => {
       username,
       email,
       passwordHash: hashedPassword,
+      nickname,
+      friends: [],
+      userTopics: [],
+      userQuestions: [],
     });
 
     // Redireciona para o formulario novamente
-    // res.redirect("/signup");
+    // https://stackoverflow.com/questions/17612695/expressjs-how-to-redirect-a-post-request-with-parameters/17612942
     res.redirect(307, "/login");
 
     console.log(result);
@@ -107,7 +111,8 @@ router.post(
 
 // GET Profile - Rota para exibir os dados do usuario atualmente logado - Rota privada - apenas usuarios logados podem acessar
 router.get("/profile", (req, res) => {
-  console.log("SESSION => ", req.user);
+  // Current session user info
+  // console.log("SESSION => ", req.user);
 
   if (!req.user || !req.user._id) {
     return res.redirect("/login");
@@ -149,9 +154,9 @@ router.post("/addnewquestion", async (req, res) => {
 
 
 router.get("/listsubjects", async (req, res) => {
-  const subject = await Subject.find({}, { subject: 1, _id: 0 }).exec();
-  const classs = await Subject.find({}, { classs: 1, _id: 0 }).exec();
-  const topic = await Subject.find({}, { topic: 1, _id: 0 }).exec();
+  const subject = await Subject.find({}, { subject: 1, _id: 0 }); //.exec();
+  const classs = await Subject.find({}, { classs: 1, _id: 0 }); //.exec();
+  const topic = await Subject.find({}, { topic: 1, _id: 0 }); //.exec();
 
   console.log(subject);
   console.log(classs);
@@ -171,52 +176,49 @@ router.get("/addsubjects", async (req, res) => {
   );
 });
 
-// router.post("/addnewsubjects", (req, res) => {
-//   // Extrair informacoes recebidas da requisicao http que veio do navegador
-//   const { subject, classs, topic } = req.body;
+router.get("/addnewsubjects", (req, res) => {
+  res.render("addSubjects");
+});
 
-//   const errors = {};
+router.post("/addnewsubjects", async (req, res) => {
+  // Extrair informacoes recebidas da requisicao http que veio do navegador
+  const { subject, classs, topic } = req.body;
+  const errors = {};
 
-//   if (!subject) {
-//     errors.subject = "Subject is necessary";
-//   }
-//   if (!classs) {
-//     errors.classs = "Class is necessary";
-//   }
-//   if (!topic) {
-//     errors.topic = "Topic is necessary";
-//   }
+  if (!subject) {
+    errors.subject = "Subject is necessary";
+  }
+  if (!classs) {
+    errors.classs = "Class is necessary";
+  }
+  if (!topic) {
+    errors.topic = "Topic is necessary";
+  }
 
-//   // Se o objeto errors tiver propriedades (chaves), retorne as mensagens de erro
-//   if (Object.keys(errors).length) {
-//     res.render("addnewsubjects", errors);
-//   }
+  // Se o objeto errors tiver propriedades (chaves), retorne as mensagens de erro
+  if (Object.keys(errors).length) {
+    res.render("addnewsubjects", errors);
+  }
 
-//   try {
+  try {
+    const result = await Subject.create({
+      subject,
+      classs,
+      topic,
+    });
 
-//     console.log("Hashed password => ", hashedPassword);
-
-//     const result = await Subject.create({
-//       subject,
-//       classs,
-//       topic,
-//     });
-
-//     res.redirect("addnewsubjects");
-
-//     console.log(result);
-//   } catch (err) {
-//     console.error(err);
-//     // Mensagem de erro para exibir erros de validacao do Schema do Mongoose
-//     if (err instanceof mongoose.Error.ValidationError) {
-//       res.status(500).render("auth/signup", { errorMessage: err.message });
-//     } else if (err.code === 11000) {
-//       res.status(500).render("auth/signup", {
-//         errorMessage:
-//           "Username and email need to be unique. Either username or email is already used.",
-//       });
-//     }
-//   }
-// });
+    res.render("addsubjects", { successMessage: "Entry added successfully!" });
+  } catch (err) {
+    console.error(err);
+    // Mensagem de erro para exibir erros de validacao do Schema do Mongoose
+    if (err instanceof mongoose.Error.ValidationError) {
+      res.status(500).render("addnewsubjects", { errorMessage: err.message });
+    } else if (err.code === 11000) {
+      res.status(500).render("addnewsubjects", {
+        errorMessage: "Keys Are not Unique.",
+      });
+    }
+  }
+});
 
 module.exports = router;

@@ -6,26 +6,31 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
 
 <form action="/addnewsubjects" method="POST">
   <label>Subject</label>
-  <input type="text" name="Subject">
+  <input type="text" name="subject">
   {{!-- Mensagem de erro para validacao do formulario --}}
   {{#if subject}}
   {{> errorPartial subject}}
   {{/if}}
 
   <label>Class</label>
-  <input type="text" name="Class">
+  <input type="text" name="classs">
   {{#if classs}}
   {{> errorPartial classs}}
   {{/if}}
 
   <label>Topic</label>
-  <input type="text" name="Topic">
+  <input type="text" name="topic">
   {{#if topic}}
   {{> errorPartial topic}}
   {{/if}}
 
   <button type="submit">Salvar</button>
+  
   {{#if errorMessage}}
   {{> errorPartial errorMessage}}
+  {{/if}}
+
+  {{#if successMessage}}
+  {{> successPartial successMessage}}
   {{/if}}
 </form>
