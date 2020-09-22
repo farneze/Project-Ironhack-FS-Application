@@ -4,8 +4,9 @@ const { Schema, model } = require("mongoose");
 
 const questSchema = new Schema(
   {
-    topicId: {
+    topic: {
       type: String,
+      required: [true, "Topic is required."],
       lowercase: true,
       trim: true,
     },
@@ -27,7 +28,7 @@ const questSchema = new Schema(
     },
 
     // array with strings of wrong answers for the program select some of them
-    wrongAnswers: {
+    wrongAnswer: {
       type: [String],
       trim: true,
       // Sintaxe de mensagem de erro customizada pra quando a regra do Schema não for satisfeita
@@ -40,4 +41,4 @@ const questSchema = new Schema(
   }
 );
 
-module.exports = model("User", questSchema);
+module.exports = model("Question", questSchema);

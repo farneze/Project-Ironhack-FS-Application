@@ -6,54 +6,55 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
 
 <form action="/addnewquestion" method="POST">
   <label>Subject</label>
-  <input type="text" name="Subject">
+  <input type="text" name="subject">
   {{!-- Mensagem de erro para validacao do formulario --}}
   {{#if subject}}
   {{> errorPartial subject}}
   {{/if}}
   <label>Class</label>
-  <input type="text" name="Class">
-  {{#if class}}
-  {{> errorPartial class}}
+  <input type="text" name="classs">
+  {{#if classs}}
+  {{> errorPartial classs}}
+  {{/if}}
+
+  <label>Topic</label>
+  <input type="text" name="topic">
+  {{#if topic}}
+  {{> errorPartial topic}}
   {{/if}}
 
   <label>Question</label>
-  <input type="text" name="Question" rows="4" cols="50">
+  <input type="text" name="question" rows="4" cols="50">
   {{#if question}}
   {{> errorPartial question}}
   {{/if}}
 
-  <label>correctAnswer</label>
-  <input type="text" name="Correct Answer" rows="4" cols="50">
+  <label>Correct Answer</label>
+  <input type="text" name="correctAnswer" rows="4" cols="50">
   {{#if correctAnswer}}
   {{> errorPartial correctAnswer}}
   {{/if}} 
 
  
-  <label> wrongAnswers</label>
-  <input type="text" name=" Wrong Answers" rows="4" cols="50">
+  <label>Wrong Answer</label>
+  <input type="text" name="wrongAnswer" rows="4" cols="50">
   {{#if  wrongAnswers}}
   {{> errorPartial  wrongAnswers}}
   {{/if}} 
 
-  <label> wrongAnswers</label>
-  <input type="text" name=" Wrong Answers" rows="4" cols="50">
+  <label>Wrong Answer</label>
+  <input type="text" name="wrongAnswer" rows="4" cols="50">
   {{#if  wrongAnswers}}
   {{> errorPartial  wrongAnswers}}
   {{/if}} 
 
-  <label> wrongAnswers</label>
-  <input type="text" name=" Wrong Answers" rows="4" cols="50">
+  <label>Wrong Answer</label>
+  <input type="text" name="wrongAnswer" rows="4" cols="50">
   {{#if  wrongAnswers}}
   {{> errorPartial  wrongAnswers}}
   {{/if}} 
 
-  <label> wrongAnswers</label>
-  <input type="text" name=" Wrong Answers" rows="4" cols="50">
-  {{#if  wrongAnswers}}
-  {{> errorPartial  wrongAnswers}}
-  {{/if}} 
-
+  
   <button type="submit">Salvar</button>
   {{#if errorMessage}}
   {{> errorPartial errorMessage}}
