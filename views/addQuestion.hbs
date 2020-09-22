@@ -23,6 +23,37 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
   {{> errorPartial question}}
   {{/if}}
 
+  <label>correctAnswer</label>
+  <input type="text" name="Correct Answer" rows="4" cols="50">
+  {{#if correctAnswer}}
+  {{> errorPartial correctAnswer}}
+  {{/if}} 
+
+ 
+  <label> wrongAnswers</label>
+  <input type="text" name=" Wrong Answers" rows="4" cols="50">
+  {{#if  wrongAnswers}}
+  {{> errorPartial  wrongAnswers}}
+  {{/if}} 
+
+  <label> wrongAnswers</label>
+  <input type="text" name=" Wrong Answers" rows="4" cols="50">
+  {{#if  wrongAnswers}}
+  {{> errorPartial  wrongAnswers}}
+  {{/if}} 
+
+  <label> wrongAnswers</label>
+  <input type="text" name=" Wrong Answers" rows="4" cols="50">
+  {{#if  wrongAnswers}}
+  {{> errorPartial  wrongAnswers}}
+  {{/if}} 
+
+  <label> wrongAnswers</label>
+  <input type="text" name=" Wrong Answers" rows="4" cols="50">
+  {{#if  wrongAnswers}}
+  {{> errorPartial  wrongAnswers}}
+  {{/if}} 
+
   <button type="submit">Salvar</button>
   {{#if errorMessage}}
   {{> errorPartial errorMessage}}

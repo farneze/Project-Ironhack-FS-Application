@@ -8,6 +8,7 @@ const passport = require("passport");
 // Importar model de usuario
 const User = require("../models/User.model");
 const Subject = require("../models/Subjects.model");
+const QuestionModel = require("../models/Question.model");
 // const User = require("../models/User.model");
 
 /* GET home page */
@@ -123,6 +124,29 @@ router.get("/logout", (req, res) => {
 router.get("/addnewquestion", (req, res) => {
   res.render("addQuestion");
 });
+
+router.post("/addnewquestion", async (req, res) => {
+  const {topicId, question,correctAnswer, wrongAnswer} = req.body
+  
+  try {
+  
+    const newQuestion = await QuestionModel.create({
+      topicId, 
+      question,
+      correctAnswer,
+      wrongAnswer
+    });
+
+    // Redireciona para o formulario novamente
+    // res.redirect("/signup");
+    res.redirect(307, "/login");
+
+    console.log(result);
+  } catch(err) {
+    console.error(err);
+  }
+})
+
 
 router.get("/listsubjects", async (req, res) => {
   const subject = await Subject.find({}, { subject: 1, _id: 0 }).exec();

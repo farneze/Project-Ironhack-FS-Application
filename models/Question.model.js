@@ -4,18 +4,8 @@ const { Schema, model } = require("mongoose");
 
 const questSchema = new Schema(
   {
-    subject: {
+    topicId: {
       type: String,
-      required: [true, "Subject is required."],
-      unique: true,
-      lowercase: true,
-      trim: true,
-    },
-
-    class: {
-      type: String,
-      required: [true, "Class is required."],
-      unique: true,
       lowercase: true,
       trim: true,
     },
