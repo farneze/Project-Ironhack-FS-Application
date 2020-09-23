@@ -125,7 +125,7 @@ router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
-
+// GET - 
 router.get("/addnewquestion", (req, res) => {
   res.render("addQuestion");
 });
@@ -225,5 +225,14 @@ router.post("/addnewsubjects", async (req, res) => {
     }
   }
 });
+
+router.get("/developers", (req, res) => {
+  res.render("developers.hbs");
+});
+
+router.get("/about", (req, res) => {
+  res.render("about.hbs");
+});
+
 
 module.exports = router;
