@@ -125,7 +125,9 @@ router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
-// GET - 
+
+
+// QUESTIONS SYSTEM - get and post routes
 router.get("/addnewquestion", (req, res) => {
   res.render("addQuestion");
 });
@@ -157,7 +159,7 @@ router.post("/addnewquestion", async (req, res) => {
   }
 })
 
-
+//SUBJECT SYSTEM - routes related to it
 router.get("/listsubjects", async (req, res) => {
   const subject = await Subject.find({}, { subject: 1, _id: 0 }); //.exec();
   const classs = await Subject.find({}, { classs: 1, _id: 0 }); //.exec();
@@ -225,6 +227,16 @@ router.post("/addnewsubjects", async (req, res) => {
     }
   }
 });
+
+// FRIENDS SYSTEM - routes related
+router.get("/addfriend", (req, res) => {
+  res.render("addFriend");
+})
+
+router.get("/addfriend", (req, res) => {
+  res.render("addFriend");
+})
+
 
 router.get("/developers", (req, res) => {
   res.render("developers.hbs");
