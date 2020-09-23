@@ -131,20 +131,27 @@ router.get("/addnewquestion", (req, res) => {
 });
 
 router.post("/addnewquestion", async (req, res) => {
-  let {subject, classs, topic, question, correctAnswer, ...wrongAnswer} = req.body
-  console.log(subject)
-  console.log(classs)
-  console.log(topic)
-  console.log(question)
-  console.log(correctAnswer)
-  console.log(wrongAnswer)
-  wrongAnswer = wrongAnswer.wrongAnswer
+  let {
+    subject,
+    classs,
+    topic,
+    question,
+    correctAnswer,
+    ...wrongAnswer
+  } = req.body;
+  console.log(subject);
+  console.log(classs);
+  console.log(topic);
+  console.log(question);
+  console.log(correctAnswer);
+  console.log(wrongAnswer);
+  wrongAnswer = wrongAnswer.wrongAnswer;
   try {
     const newQuestion = await Question.create({
       topic,
       question,
       correctAnswer,
-      wrongAnswer
+      wrongAnswer,
     });
 
     // Redireciona para o formulario novamente
@@ -152,20 +159,23 @@ router.post("/addnewquestion", async (req, res) => {
     // res.redirect(307, "/login");
 
     console.log(result);
-  } catch(err) {
+  } catch (err) {
     console.error(err);
   }
-})
-
+});
 
 router.get("/listsubjects", async (req, res) => {
-  const subject = await Subject.find({}, { subject: 1, _id: 0 }); //.exec();
-  const classs = await Subject.find({}, { classs: 1, _id: 0 }); //.exec();
-  const topic = await Subject.find({}, { topic: 1, _id: 0 }); //.exec();
+  let subject = await Subject.find({}, { subject: 1, _id: 0 }); //.exec();
+  let classs = await Subject.find({}, { classs: 1, _id: 0 }); //.exec();
+  let topic = await Subject.find({}, { topic: 1, _id: 0 }); //.exec();
 
-  console.log(subject);
-  console.log(classs);
-  console.log(topic);
+  subject = subject
+    .map((el) => el.subject)
+    .filter((el, i, arr) => el != arr[i + 1]);
+  classs = classs
+    .map((el) => el.classs)
+    .filter((el, i, arr) => el != arr[i + 1]);
+  topic = topic.map((el) => el.topic).filter((el, i, arr) => el != arr[i + 1]);
 });
 
 router.get("/addsubjects", async (req, res) => {
@@ -181,47 +191,118 @@ router.get("/addsubjects", async (req, res) => {
   );
 });
 
-router.get("/addnewsubjects", (req, res) => {
-  res.render("addSubjects");
+router.get("/addnewsubjects", async (req, res) => {
+  let subject = await Subject.find({}, { subject: 1, _id: 0 });
+  let classs = await Subject.find({}, { classs: 1, _id: 0 });
+  let topic = await Subject.find({}, { topic: 1, _id: 0 });
+
+  subject = subject
+    .map((el) => el.subject)
+    .filter((el, i, arr) => el != arr[i + 1]);
+  classs = classs
+    .map((el) => el.classs)
+    .filter((el, i, arr) => el != arr[i + 1]);
+  topic = topic.map((el) => el.topic).filter((el, i, arr) => el != arr[i + 1]);
+
+  res.render("subjects/editDeleteSubjects", { subject, classs, topic });
 });
 
-router.post("/addnewsubjects", async (req, res) => {
-  // Extrair informacoes recebidas da requisicao http que veio do navegador
-  const { subject, classs, topic } = req.body;
-  const errors = {};
+// ===================== EDIT / DELETE =============
+router.get("/querysubjects", async (req, res) => {
+  let subject = req.query.subject;
+  let classs = req.query.classs;
+  let topic = req.query.topic;
 
-  if (!subject) {
-    errors.subject = "Subject is necessary";
-  }
-  if (!classs) {
-    errors.classs = "Class is necessary";
-  }
-  if (!topic) {
-    errors.topic = "Topic is necessary";
-  }
-
-  // Se o objeto errors tiver propriedades (chaves), retorne as mensagens de erro
-  if (Object.keys(errors).length) {
-    res.render("addnewsubjects", errors);
-  }
-
-  try {
-    const result = await Subject.create({
+  if (req.query.subject == undefined) {
+    subject = await Subject.find({}, { subject: 1, _id: 0 });
+    subject = subject
+      .map((el) => el.subject)
+      .filter((el, i, arr) => el != arr[i + 1]);
+    subject.unshift("Select subject");
+    res.render("subjects/querySubjects", { subject });
+  } else if (req.query.classs == undefined) {
+    classs = await Subject.find({ subject: subject }, { classs: 1, _id: 0 });
+    classs = classs
+      .map((el) => el.classs)
+      .filter((el, i, arr) => el != arr[i + 1]);
+    subject = [subject];
+    classs.unshift("Select class");
+    res.render("subjects/querySubjects", { subject, classs });
+  } else if (req.query.topic == undefined) {
+    topic = await Subject.find(
+      { subject: subject, classs: classs },
+      { topic: 1, _id: 0 }
+    );
+    topic = topic
+      .map((el) => el.topic)
+      .filter((el, i, arr) => el != arr[i + 1]);
+    subject = [subject];
+    classs = [classs];
+    topic.unshift("Select topic");
+    res.render("subjects/querySubjects", { subject, classs, topic });
+  } else {
+    subject = [subject];
+    classs = [classs];
+    topic = [topic];
+    res.render("subjects/querySubjects", {
       subject,
       classs,
       topic,
+      myBool: true,
     });
+  }
+});
 
-    res.render("addsubjects", { successMessage: "Entry added successfully!" });
-  } catch (err) {
-    console.error(err);
-    // Mensagem de erro para exibir erros de validacao do Schema do Mongoose
-    if (err instanceof mongoose.Error.ValidationError) {
-      res.status(500).render("addnewsubjects", { errorMessage: err.message });
-    } else if (err.code === 11000) {
-      res.status(500).render("addnewsubjects", {
-        errorMessage: "Keys Are not Unique.",
-      });
+router.get("/addeditsubjects", (req, res) => {
+  let subject = req.query.subject;
+  let classs = req.query.classs;
+  let topic = req.query.topic;
+
+  if (subject && classs && topic) {
+    res.render("subjects/addEditSubjects", { subject, classs, topic });
+  } else {
+    res.render("subjects/addEditSubjects");
+  }
+});
+
+router.post("/addeditsubjects", async (req, res) => {
+  const subject = req.body.subject;
+  const classs = req.body.classs;
+  const topic = req.body.topic;
+
+  if (subject && classs && topic) {
+    try {
+      if ((await Subject.find({ topic: topic })) != "") {
+        const result = await Subject.updateOne(
+          {
+            topic: topic,
+          },
+          {
+            subject,
+            classs,
+          }
+        );
+      } else {
+        const result = await Subject.create({ subject, classs, topic });
+      }
+      res.render("subjects/addEditSubjects");
+    } catch (err) {
+      console.log(err);
+    }
+  }
+});
+
+router.get("/deletesubjects", async (req, res) => {
+  let subject = req.query.subject;
+  let classs = req.query.classs;
+  let topic = req.query.topic;
+
+  if (subject && classs && topic) {
+    try {
+      const result = await Subject.deleteOne({ topic: topic });
+      res.redirect("/querysubjects");
+    } catch (err) {
+      console.error(err);
     }
   }
 });

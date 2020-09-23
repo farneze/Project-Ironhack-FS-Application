@@ -1,0 +1,40 @@
+<h1>{{title}}</h1>
+<p>Please, enter the required data bellow in each field to create a new question in the questions database</p>
+<form action="/addeditsubjects" method="POST">
+  
+  {{#if subject}}
+    <input type="text" name="subject" class="form-control" value={{subject}}>
+  {{else}}
+    <input type="text" name="subject" class="form-control" placeholder="Type subject">
+  {{/if}}
+  {{!-- Mensagem de erro para validacao do formulario --}}
+
+  {{#if classs}}
+    <input type="text" name="classs" class="form-control" value={{classs}}>
+  {{else}}
+    <input type="text" name="classs" class="form-control" placeholder="Type class">
+  {{/if}}
+
+  {{#if topic}}
+    <input type="text" name="topic" class="form-control" value={{topic}}>
+  {{else}}
+    <input type="text" name="topic" class="form-control" placeholder="Type topic">
+  {{/if}}
+
+  {{#if myBool}}
+        <a href="/addeditsubjects?subject={{subject}}&classs={{classs}}&topic={{topic}}" class="pb-2 mb-2 btn btn-info" role="button">Edit</a>
+        <a href="/deletesubjects?subject={{subject}}&classs={{classs}}&topic={{topic}}" class="pb-2 mb-2 btn btn-info" role="button">Dew IT</a>
+  {{/if}}
+
+   <button type="submit">Salvar</button>
+
+  {{!-- {{#if topic}}
+  {{> errorPartial topic}}
+  {{/if}} 
+   {{#if errorMessage}}
+  {{> errorPartial errorMessage}}
+  {{/if}}
+  {{#if successMessage}}
+  {{> successPartial successMessage}}
+  {{/if}} --}}
+</form>
