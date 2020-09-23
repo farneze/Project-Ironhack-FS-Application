@@ -1,0 +1,43 @@
+{{!-- Aqui há o formulário para se adicionar novas matérias ou disciplinas
+ao banco de dados. Ele receberá cada uma das ropriedades 
+necessárias e enviará como metodo "post" para o indexRoutes --}}
+<h1>{{title}}</h1>
+<p>Please, enter the required data bellow in each field to create a new question in the questions database</p>
+
+<form action="/addnewsubjects" method="POST">
+  <label>Subject</label>
+  <select name="subject">
+    {{#each subject}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
+
+  <label>Class</label>
+  <select name="subject">
+    {{#each classs}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
+
+  <label>Topic</label>
+  <select name="topic">
+    {{#each topic}}
+      <option value="{{this}}">{{this}}</option>
+    {{/each}}
+  </select>
+
+  {{!-- <button type="submit">Salvar</button> --}}
+  <div>
+  <a href="/addnewsubjects" class="pb-2 mb-2 btn btn-info" role="button">Add</a>
+  <a href="/addnewsubjects" class="pb-2 mb-2 btn btn-info" role="button">Edit</a>
+  <a href="/addnewsubjects" class="pb-2 mb-2 btn btn-info" role="button">Delete</a>
+</div>
+  {{#if errorMessage}}
+  {{> errorPartial errorMessage}}
+  {{/if}}
+
+  {{#if successMessage}}
+  {{> successPartial successMessage}}
+  {{/if}}
+  
+</form>

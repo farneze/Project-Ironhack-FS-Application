@@ -1,0 +1,42 @@
+{{!-- Aqui há o formulário para se adicionar novas matérias ou disciplinas
+ao banco de dados. Ele receberá cada uma das ropriedades 
+necessárias e enviará como metodo "post" para o indexRoutes --}}
+{{!-- <script src="../../js/test.js"></script> --}}
+
+<h1>{{title}}</h1>
+<p>Please, enter the required data bellow in each field to create a new question in the questions database</p>
+
+<form action="/querysubjects" method="GET">
+
+  <div class="form-group">
+      <select id="inputSubject" class="form-control" name="subject" onchange="this.form.submit()">
+          {{#each subject}}
+              <option value="{{this}}">{{this}}</option>
+          {{/each}}
+      </select>
+
+      {{#if classs}}
+        <select id="inputClass" class="form-control" name="classs" onchange="this.form.submit()">
+            {{#each classs}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+      {{/if}}
+
+      {{#if topic}}
+        <select id="inputTopic" class="form-control" name="topic" onchange="this.form.submit()">
+            {{#each topic}}
+                <option value="{{this}}">{{this}}</option>
+            {{/each}}
+        </select>
+      {{/if}}
+
+
+  </div>
+  <a href="/querysubjects" class="pb-2 mb-2 btn btn-info" role="button">Reload</a>
+  {{#if myBool}}
+        <a href="/addeditsubjects?subject={{subject}}&classs={{classs}}&topic={{topic}}" class="pb-2 mb-2 btn btn-info" role="button">Edit</a>
+        <a href="/deletesubjects?subject={{subject}}&classs={{classs}}&topic={{topic}}" class="pb-2 mb-2 btn btn-info" role="button">Dew IT</a>
+  {{/if}}
+  
+</form>
