@@ -14,7 +14,6 @@ const questSchema = new Schema(
     question: {
       type: String,
       required: [true, "Question is required."],
-      unique: true,
       lowercase: true,
       trim: true,
     },
@@ -22,7 +21,6 @@ const questSchema = new Schema(
     correctAnswer: {
       type: String,
       required: [true, "Correct answer is required."],
-      unique: true,
       lowercase: true,
       trim: true,
     },
@@ -33,7 +31,6 @@ const questSchema = new Schema(
       trim: true,
       // Sintaxe de mensagem de erro customizada pra quando a regra do Schema não for satisfeita
       required: [true, "Wrong answers are required."],
-      unique: true,
     },
   },
   {

@@ -163,22 +163,6 @@ router.get("/logout", (req, res) => {
 });
 
 // QUESTIONS SYSTEM - get and post routes
-router.get("/addnewquestion", async (req, res) => {
-  let subject = await Subject.find({}, { subject: 1, _id: 0 });
-  let classs = await Subject.find({}, { classs: 1, _id: 0 });
-  let topic = await Subject.find({}, { topic: 1, _id: 0 });
-
-  subject = subject
-    .map((el) => el.subject)
-    .filter((el, i, arr) => el != arr[i + 1]);
-  classs = classs
-    .map((el) => el.classs)
-    .filter((el, i, arr) => el != arr[i + 1]);
-  topic = topic.map((el) => el.topic).filter((el, i, arr) => el != arr[i + 1]);
-
-  res.render("questions/addQuestion", { subject, classs, topic });
-});
-
 router.get("/queryquestion", async (req, res) => {
   let subject = req.query.subject;
   let classs = req.query.classs;
@@ -187,14 +171,14 @@ router.get("/queryquestion", async (req, res) => {
   if (req.query.subject == undefined) {
     subject = await Subject.find({}, { subject: 1, _id: 0 });
     subject = subject
-      .map((el) => el.subject)
+      .map((el) => el.subject).sort()
       .filter((el, i, arr) => el != arr[i + 1]);
     subject.unshift("Select subject");
     res.render("questions/addQuestion", { subject });
   } else if (req.query.classs == undefined) {
     classs = await Subject.find({ subject: subject }, { classs: 1, _id: 0 });
     classs = classs
-      .map((el) => el.classs)
+      .map((el) => el.classs).sort()
       .filter((el, i, arr) => el != arr[i + 1]);
     subject = [subject];
     classs.unshift("Select class");
@@ -205,7 +189,7 @@ router.get("/queryquestion", async (req, res) => {
       { topic: 1, _id: 0 }
     );
     topic = topic
-      .map((el) => el.topic)
+      .map((el) => el.topic).sort()
       .filter((el, i, arr) => el != arr[i + 1]);
     subject = [subject];
     classs = [classs];
@@ -224,17 +208,16 @@ router.get("/queryquestion", async (req, res) => {
   }
 });
 
-router.post("/addnewquestion", async (req, res) => {
+router.post("/queryquestion", async (req, res) => {
+  
+  console.log(req.body)
+  
   let {
-    subject,
-    classs,
     topic,
     question,
     correctAnswer,
     ...wrongAnswer
   } = req.body;
-  console.log(subject);
-  console.log(classs);
   console.log(topic);
   console.log(question);
   console.log(correctAnswer);
@@ -247,12 +230,13 @@ router.post("/addnewquestion", async (req, res) => {
       correctAnswer,
       wrongAnswer,
     });
+    
 
     // Redireciona para o formulario novamente
     // res.redirect("/signup");
-    // res.redirect(307, "/login");
+    res.redirect("/queryquestion");
 
-    console.log(result);
+    // console.log(result);
   } catch (err) {
     console.error(err);
   }

@@ -33,36 +33,47 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
 
 
   </div>
-  <a href="/addnewquestion" class="pb-2 mb-2 btn btn-info" role="button">Reload</a>
-  
+  <a href="/queryquestion" class="pb-2 mb-2 btn btn-info" role="button">Reload</a>
+
+  </form>
+
   {{#if myBool}}
+
+    <form action="/queryquestion" method="POST">
+
+      {{#if topic}}
+        {{#each topic}}
+                <input class="form-control invisible" name="topic" type="text" value="{{this}}"></input>
+        {{/each}}
+      {{/if}}
+
+
       <label>Question</label>
-      <input type="text" name="question" rows="4" cols="50">
+      <textarea type="text" name="question" rows="4" class="form-control" ></textarea>
       {{#if question}}
       {{> errorPartial question}}
       {{/if}}
 
       <label>Correct Answer</label>
-      <input type="text" name="correctAnswer" rows="4" cols="50">
+      <input class="form-control" type="text" name="correctAnswer" >
       {{#if correctAnswer}}
       {{> errorPartial correctAnswer}}
       {{/if}} 
-
     
       <label>Wrong Answer</label>
-      <input type="text" name="wrongAnswer" rows="4" cols="50">
+      <input class="form-control" type="text" name="wrongAnswer">
       {{#if  wrongAnswers}}
       {{> errorPartial  wrongAnswers}}
       {{/if}} 
 
       <label>Wrong Answer</label>
-      <input type="text" name="wrongAnswer" rows="4" cols="50">
+      <input class="form-control" type="text" name="wrongAnswer">
       {{#if  wrongAnswers}}
       {{> errorPartial  wrongAnswers}}
       {{/if}} 
 
       <label>Wrong Answer</label>
-      <input type="text" name="wrongAnswer" rows="4" cols="50">
+      <input class="form-control" type="text" name="wrongAnswer">
       {{#if  wrongAnswers}}
       {{> errorPartial  wrongAnswers}}
       {{/if}} 
@@ -72,7 +83,9 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
       {{#if errorMessage}}
       {{> errorPartial errorMessage}}
       {{/if}}
+
+    </form>
+
   {{/if}}
 
   
-</form>
