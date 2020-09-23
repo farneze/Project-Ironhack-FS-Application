@@ -32,6 +32,20 @@ router.get("/minimsg", async (req, res) => {
   //   console.log(err);
   // }
 });
+//pop...noice!
+
+router.get("/addsubjects", async (req, res) => {
+  const result = await Subject.create(
+    { subject: "Biologia", classs: "TemaBio1", topic: "TopicoTemaBio11" },
+    { subject: "Biologia", classs: "TemaBio1", topic: "TopicoTemaBio12" },
+    { subject: "Biologia", classs: "TemaBio2", topic: "TopicoTemaBio21" },
+    { subject: "Biologia", classs: "TemaBio2", topic: "TopicoTemaBio22" },
+    { subject: "História", classs: "TemaHist1", topic: "TopicoTemaHist11" },
+    { subject: "História", classs: "TemaHist1", topic: "TopicoTemaHist12" },
+    { subject: "História", classs: "TemaHist2", topic: "TopicoTemaHist21" },
+    { subject: "História", classs: "TemaHist2", topic: "TopicoTemaHist22" }
+  );
+});
 
 /* GET home page */
 router.get("/", (req, res) => res.render("index", { title: "Meu saiti 🚀" }));
@@ -149,8 +163,65 @@ router.get("/logout", (req, res) => {
 });
 
 // QUESTIONS SYSTEM - get and post routes
-router.get("/addnewquestion", (req, res) => {
-  res.render("addQuestion");
+router.get("/addnewquestion", async (req, res) => {
+  let subject = await Subject.find({}, { subject: 1, _id: 0 });
+  let classs = await Subject.find({}, { classs: 1, _id: 0 });
+  let topic = await Subject.find({}, { topic: 1, _id: 0 });
+
+  subject = subject
+    .map((el) => el.subject)
+    .filter((el, i, arr) => el != arr[i + 1]);
+  classs = classs
+    .map((el) => el.classs)
+    .filter((el, i, arr) => el != arr[i + 1]);
+  topic = topic.map((el) => el.topic).filter((el, i, arr) => el != arr[i + 1]);
+
+  res.render("questions/addQuestion", { subject, classs, topic });
+});
+
+router.get("/queryquestion", async (req, res) => {
+  let subject = req.query.subject;
+  let classs = req.query.classs;
+  let topic = req.query.topic;
+
+  if (req.query.subject == undefined) {
+    subject = await Subject.find({}, { subject: 1, _id: 0 });
+    subject = subject
+      .map((el) => el.subject)
+      .filter((el, i, arr) => el != arr[i + 1]);
+    subject.unshift("Select subject");
+    res.render("questions/addQuestion", { subject });
+  } else if (req.query.classs == undefined) {
+    classs = await Subject.find({ subject: subject }, { classs: 1, _id: 0 });
+    classs = classs
+      .map((el) => el.classs)
+      .filter((el, i, arr) => el != arr[i + 1]);
+    subject = [subject];
+    classs.unshift("Select class");
+    res.render("questions/addQuestion", { subject, classs });
+  } else if (req.query.topic == undefined) {
+    topic = await Subject.find(
+      { subject: subject, classs: classs },
+      { topic: 1, _id: 0 }
+    );
+    topic = topic
+      .map((el) => el.topic)
+      .filter((el, i, arr) => el != arr[i + 1]);
+    subject = [subject];
+    classs = [classs];
+    topic.unshift("Select topic");
+    res.render("questions/addQuestion", { subject, classs, topic });
+  } else {
+    subject = [subject];
+    classs = [classs];
+    topic = [topic];
+    res.render("questions/addQuestion", {
+      subject,
+      classs,
+      topic,
+      myBool: true,
+    });
+  }
 });
 
 router.post("/addnewquestion", async (req, res) => {
@@ -188,51 +259,6 @@ router.post("/addnewquestion", async (req, res) => {
 });
 
 //SUBJECT SYSTEM - routes related to it
-
-router.get("/listsubjects", async (req, res) => {
-  let subject = await Subject.find({}, { subject: 1, _id: 0 }); //.exec();
-  let classs = await Subject.find({}, { classs: 1, _id: 0 }); //.exec();
-  let topic = await Subject.find({}, { topic: 1, _id: 0 }); //.exec();
-
-  subject = subject
-    .map((el) => el.subject)
-    .filter((el, i, arr) => el != arr[i + 1]);
-  classs = classs
-    .map((el) => el.classs)
-    .filter((el, i, arr) => el != arr[i + 1]);
-  topic = topic.map((el) => el.topic).filter((el, i, arr) => el != arr[i + 1]);
-});
-
-router.get("/addsubjects", async (req, res) => {
-  const result = await Subject.create(
-    { subject: "Biologia", classs: "TemaBio1", topic: "TopicoTemaBio11" },
-    { subject: "Biologia", classs: "TemaBio1", topic: "TopicoTemaBio12" },
-    { subject: "Biologia", classs: "TemaBio2", topic: "TopicoTemaBio21" },
-    { subject: "Biologia", classs: "TemaBio2", topic: "TopicoTemaBio22" },
-    { subject: "História", classs: "TemaHist1", topic: "TopicoTemaHist11" },
-    { subject: "História", classs: "TemaHist1", topic: "TopicoTemaHist12" },
-    { subject: "História", classs: "TemaHist2", topic: "TopicoTemaHist21" },
-    { subject: "História", classs: "TemaHist2", topic: "TopicoTemaHist22" }
-  );
-});
-
-router.get("/addnewsubjects", async (req, res) => {
-  let subject = await Subject.find({}, { subject: 1, _id: 0 });
-  let classs = await Subject.find({}, { classs: 1, _id: 0 });
-  let topic = await Subject.find({}, { topic: 1, _id: 0 });
-
-  subject = subject
-    .map((el) => el.subject)
-    .filter((el, i, arr) => el != arr[i + 1]);
-  classs = classs
-    .map((el) => el.classs)
-    .filter((el, i, arr) => el != arr[i + 1]);
-  topic = topic.map((el) => el.topic).filter((el, i, arr) => el != arr[i + 1]);
-
-  res.render("subjects/editDeleteSubjects", { subject, classs, topic });
-});
-
-// ===================== EDIT / DELETE =============
 router.get("/querysubjects", async (req, res) => {
   let subject = req.query.subject;
   let classs = req.query.classs;
@@ -333,10 +359,6 @@ router.get("/deletesubjects", async (req, res) => {
 });
 
 // FRIENDS SYSTEM - routes related
-router.get("/addfriend", (req, res) => {
-  res.render("addFriend");
-});
-
 router.get("/addfriend", (req, res) => {
   res.render("addFriend");
 });
