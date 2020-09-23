@@ -9,7 +9,29 @@ const passport = require("passport");
 const User = require("../models/User.model");
 const Subject = require("../models/Subjects.model");
 const Question = require("../models/Question.model");
-// const User = require("../models/User.model");
+
+const userList = require("./users.json");
+
+router.get("/addUserList", async (req, res) => {
+  try {
+    const result = await User.create(userList);
+    res.render("auth/profile");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/minimsg", async (req, res) => {
+  // let subject = await Subject.find({ _id: req.user._id }, { friends: 1, _id: 0 });
+  let subject = await Subject.find({ _id: req.user._id });
+  // console.log(subject);
+  // try {
+  //   const result = await User.find(userList);
+  //   res.render("auth/profile", req.user);
+  // } catch (err) {
+  //   console.log(err);
+  // }
+});
 
 /* GET home page */
 router.get("/", (req, res) => res.render("index", { title: "Meu saiti 🚀" }));
@@ -125,7 +147,6 @@ router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
-
 
 // QUESTIONS SYSTEM - get and post routes
 router.get("/addnewquestion", (req, res) => {
@@ -314,12 +335,11 @@ router.get("/deletesubjects", async (req, res) => {
 // FRIENDS SYSTEM - routes related
 router.get("/addfriend", (req, res) => {
   res.render("addFriend");
-})
+});
 
 router.get("/addfriend", (req, res) => {
   res.render("addFriend");
-})
-
+});
 
 router.get("/developers", (req, res) => {
   res.render("developers.hbs");
@@ -328,6 +348,5 @@ router.get("/developers", (req, res) => {
 router.get("/about", (req, res) => {
   res.render("about.hbs");
 });
-
 
 module.exports = router;

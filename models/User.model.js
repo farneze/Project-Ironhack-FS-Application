@@ -10,7 +10,6 @@ const userSchema = new Schema(
       trim: true,
       // Sintaxe de mensagem de erro customizada pra quando a regra do Schema não for satisfeita
       required: [true, "Username is required."],
-      unique: true,
     },
 
     // Email
