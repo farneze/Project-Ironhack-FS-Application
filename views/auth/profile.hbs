@@ -1,12 +1,45 @@
 <section class="jumbotron text-center">
 <h2>Welcome, {{ username }}!</h2>
 <h5>This is your profile page {{ nickname }}!</h5>
+
+{{!-- <a href="/addfriend" class="pb-2 mb-2 btn btn-info" role="button">Add Friend</a>
+<a href="/querysubjects" class="pb-2 mb-2 btn btn-info" role="button">Show Subjects</a>
+<a href="/querysubjects" class="pb-2 mb-2 btn btn-info" role="button">Show Subjects</a>
+<a href="/querysubjects" class="pb-2 mb-2 btn btn-info" role="button">Show Subjects</a> --}}
+
+
 </section>
-<div class="w-25 container d-flex flex-column align-content-center justify-content-center">
-  <a href="/addnewquestion" class="pb-2 mb-2 btn btn-info" role="button">Write a brand new question</a>
-  <a href="/addfriend" class="pb-2 mb-2 btn btn-info" role="button">Add Subjects</a>
-  <br>
-  <a href="/addeditsubjects" class="pb-2 mb-2 btn btn-info" role="button">Add Subjects</a>
-  <a href="/querysubjects" class="pb-2 mb-2 btn btn-info" role="button">Show Subjects</a>
+<div class="w-25 container d-flex align-content-center justify-content-center">
+  <div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle pb-2 mb-2 mx-2 px-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Friends
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="/addfriend">Add Friend</a>
+  </div>
+</div>
+
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle pb-2 mb-2 mx-2 px-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Subjects
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="/addeditsubjects">Add Subjects</a>
+    <a class="dropdown-item" href="/querysubjects">Show Subjects</a>
+  </div>
+</div>
+
+<div class="dropdown show">
+  <a class="btn btn-secondary dropdown-toggle pb-2 mb-2 mx-2 px-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Questions
+  </a>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <a class="dropdown-item" href="/addnewquestion">Write a brand new question</a>
+  </div>
+</div>
+  
 </div>
 
