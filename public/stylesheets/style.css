@@ -121,3 +121,25 @@ ul li {
 .form-signin input {
   margin-bottom: 0 !important;
 }
+
+footer{
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.developersBlock{
+  display: flex;
+  flex-direction: column;
+}
+
+
+.devs{
+  display: flex;
+  flex-direction: column;
+}
+
+.footerDiv{
+  display: flex;
+  /* flex-direction: column; */
+}
