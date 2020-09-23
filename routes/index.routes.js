@@ -188,6 +188,7 @@ router.get("/queryquestion", async (req, res) => {
     subject = await Subject.find({}, { subject: 1, _id: 0 });
     subject = subject
       .map((el) => el.subject)
+      .sort()
       .filter((el, i, arr) => el != arr[i + 1]);
     subject.unshift("Select subject");
     res.render("questions/addQuestion", { subject });
@@ -195,6 +196,7 @@ router.get("/queryquestion", async (req, res) => {
     classs = await Subject.find({ subject: subject }, { classs: 1, _id: 0 });
     classs = classs
       .map((el) => el.classs)
+      .sort()
       .filter((el, i, arr) => el != arr[i + 1]);
     subject = [subject];
     classs.unshift("Select class");
@@ -206,6 +208,7 @@ router.get("/queryquestion", async (req, res) => {
     );
     topic = topic
       .map((el) => el.topic)
+      .sort()
       .filter((el, i, arr) => el != arr[i + 1]);
     subject = [subject];
     classs = [classs];
@@ -268,6 +271,7 @@ router.get("/querysubjects", async (req, res) => {
     subject = await Subject.find({}, { subject: 1, _id: 0 });
     subject = subject
       .map((el) => el.subject)
+      .sort()
       .filter((el, i, arr) => el != arr[i + 1]);
     subject.unshift("Select subject");
     res.render("subjects/querySubjects", { subject });
@@ -275,6 +279,7 @@ router.get("/querysubjects", async (req, res) => {
     classs = await Subject.find({ subject: subject }, { classs: 1, _id: 0 });
     classs = classs
       .map((el) => el.classs)
+      .sort()
       .filter((el, i, arr) => el != arr[i + 1]);
     subject = [subject];
     classs.unshift("Select class");
@@ -286,6 +291,7 @@ router.get("/querysubjects", async (req, res) => {
     );
     topic = topic
       .map((el) => el.topic)
+      .sort()
       .filter((el, i, arr) => el != arr[i + 1]);
     subject = [subject];
     classs = [classs];
