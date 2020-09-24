@@ -1,0 +1,71 @@
+{{!-- Aqui há o formulário para se adicionar uma nova questão 
+ao banco de dados. Ele receberá cada uma das ropriedades 
+necessárias e enviará como metodo "post" para o indexRoutes --}}
+<h1>{{title}}</h1>
+<h5>Please, enter the required data bellow in each field to create a new question in the questions database</h5>
+
+<form action="/queryquestion?show=true" method="GET">
+  {{#if show}}
+          <input class="form-control invisible" name="show" type="text" value="{{show}}"></input>
+  {{/if}}
+
+  <div class="form-group">
+    <select id="inputSubject" class="form-control" name="subject" onchange="this.form.submit()">
+        {{#each subject}}
+            <option value="{{this}}">{{this}}</option>
+        {{/each}}
+    </select>
+
+    {{#if classs}}
+      <select id="inputClass" class="form-control" name="classs" onchange="this.form.submit()">
+          {{#each classs}}
+              <option value="{{this}}">{{this}}</option>
+          {{/each}}
+      </select>
+    {{/if}}
+
+    {{#if topic}}
+      <select id="inputTopic" class="form-control" name="topic" onchange="this.form.submit()">
+          {{#each topic}}
+              <option value="{{this}}">{{this}}</option>
+          {{/each}}
+      </select>
+    {{/if}}
+  </div>
+  <a href="/queryquestion?show=true" class="pb-2 mb-2 btn btn-info" role="button">Reload</a>
+
+</form>
+
+
+<form action="/searchquestions" method="POST">
+  <a href="/searchquestions?show=true&subject={{subject}}&classs={{classs}}&topic={{topic}}" class="pb-2 mb-2 btn btn-info" role="button">Search</a>
+  
+  {{#if subject}}
+      {{#each subject}}
+          <input class="form-control invisible" name="subject" type="text" value="{{this}}"></input>
+      {{/each}}
+  {{/if}}
+  {{#if classs}}
+      {{#each classs}}
+          <input class="form-control invisible" name="classs" type="text" value="{{this}}"></input>
+      {{/each}}
+  {{/if}}
+  {{#if topic}}
+      {{#each topic}}
+         <input class="form-control invisible" name="topic" type="text" value="{{this}}"></input>
+      {{/each}}
+  {{/if}}
+  
+  
+</form>
+ 
+{{!-- TODO --}}
+<form action="/viewquestion" method="POST">
+  {{#if myBool}} 
+      {{> partialQuestion questions}}
+  {{/if}}
+</form>
+
+
+
+  

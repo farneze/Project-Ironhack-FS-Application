@@ -1,0 +1,188 @@
+[
+  {
+    "topic": "Água e sais minerais",
+    "question": "Os principais elementos metálicos presentes no corpo humano são cálcio, sódio, potássio e magnésio.Dentre esses elementos, o de maior raio atômico é encontrado, em maior quantidade, no seguinte fluido orgânico:",
+    "correctAnswer": "biliar",
+    "wrongAnswer": ["intersticial", "plasmático", "intracelular"]
+  },
+  {
+    "topic": "Modelo Atômico",
+    "question": "Associe as afirmações a seus respectivos responsáveis: I - O átomo não é indivisível e a matéria possui propriedades elétricas (1897). II - O átomo é uma esfera maciça (1808). III - O átomo é formado por duas regiões denominadas núcleo e eletrosfera (1911).",
+    "correctAnswer": "I - Rutherford, II - Thomson, III - Dalton.",
+    "wrongAnswer": [
+      "I - Dalton, II - Rutherford, III - Thomson.",
+      "I - Thomson, II - Dalton, III - Rutherford.",
+      "I - Dalton, II - Thomson, III - Rutherford."
+    ]
+  },
+  {
+    "topic": "Modelo Atômico",
+    "question": "Os modelos atômicos descrevem alguns aspectos estruturais dos átomos. Sobre essa afirmação podemos afirmar que:",
+    "correctAnswer": "Os modelos atômicos foram desenvolvidos pelos cientistas gregos Leucipo e Demócrito.",
+    "wrongAnswer": [
+      "Os principais modelos atômicos são: Modelo de Rutherford e o Modelo de Rutherford-Bohr.",
+      "O primeiro modelo atômico desenvolvido foi o Modelo Atômico de Rutherford.",
+      "Os modelos atômicos foram desenvolvidos por cientistas com o intuito de compreender melhor o átomo e a sua composição."
+    ]
+  },
+  {
+    "topic": "Modelo Atômico",
+    "question": "Associe as afirmações a seus respectivos responsáveis: I - O átomo não é indivisível e a matéria possui propriedades elétricas (1897). II - O átomo é uma esfera maciça (1808). III - O átomo é formado por duas regiões denominadas núcleo e eletrosfera (1911).",
+    "correctAnswer": "I - Dalton, II - Rutherford, III - Thomson.",
+    "wrongAnswer": [
+      "I - Thomson, II - Dalton, III - Rutherford.",
+      "I - Dalton, II - Thomson, III - Rutherford.",
+      "I - Rutherford, II - Thomson, III - Dalton."
+    ]
+  },
+  {
+    "topic": "Distribuição eletrônica",
+    "question": "O ácido não oxigenado formado por um ametal de configuração eletrônica da última camada 3s2 3p4 é um poluente de elevada toxicidade gerado em determinadas atividades industriais. Para evitar seu descarte direto no meio ambiente, faz-se a reação de neutralização total entre esse ácido e o hidróxido do metal do 4º período e grupo IIA da tabela de classificação periódica dos elementos. A fórmula do sal formado nessa reação é:",
+    "correctAnswer": "CaS",
+    "wrongAnswer": ["CaCl2", "MgS", "MgCl2"]
+  },
+  {
+    "topic": "Distribuição eletrônica",
+    "question": "Ao se realizar a distribuição eletrônica do titânio, que possui número atômico igual a 22, descobre-se que o seu subnível mais energético e os elétrons distribuídos nele são dados por:",
+    "correctAnswer": "3p3",
+    "wrongAnswer": ["3p5", "4s2", "3d2"]
+  },
+  {
+    "topic": "Pronome",
+    "question": "A respeito da colocação pronominal em língua portuguesa, marque a opção correta:",
+    "correctAnswer": "O prazo sempre esgota-se às 23:59h.",
+    "wrongAnswer": [
+      "Se necessita de médico pediatra. Favor ligar para o número abaixo.",
+      "Pernilongos perturbam-lhes a paciência.",
+      "Para a encontrar, dirigir-se ao guichê cinco."
+    ]
+  },
+  {
+    "topic": "Acentuação",
+    "question": "Releia o trecho a seguir. [...] denominaram de metalinguagem qualquer sistema linguístico (por exemplo, a linguagem da Lógica, da Gramática, etc.) que não conduza às denotata extralinguísticas, mas que, semanticamente, conduza a símbolos e fatos linguísticos. Em relação ao uso do acento indicativo de crase nesse trecho, assinale a alternativa CORRETA.",
+    "correctAnswer": "O acento é obrigatório e regido pelo verbo conduzir.",
+    "wrongAnswer": [
+      "O acento é facultativo e regido pelo verbo conduzir.",
+      "O acento é obrigatório, pois está implícita a locução à moda de.",
+      "O acento é facultativo, pois, quando a locução à moda de está implícita, é possível suprimir o acento."
+    ]
+  },
+  {
+    "topic": "Acentuação",
+    "question": "Em que opção a acentuação do termo destacado está correta?",
+    "correctAnswer": "A prática da leitura constrói cidadãos capazes de entender criticamente a realidade.",
+    "wrongAnswer": [
+      "De acordo com o texto, pessoas que lêem, desenvolvem o raciocínio e falam melhor.",
+      "Quando o conferencista enfatizou a importância da leitura, foi ovacionado pela platéia.",
+      "A ignorância prepotente deforma por estagnação, pois o indivíduo pára de questionar."
+    ]
+  },
+  {
+    "topic": "Trovadorismo",
+    "question": "Camões(1525?-1580), nome citado no texto, foi um dos maiores escritores da língua portuguesa. Sobre Camões, é correto afirmar que:",
+    "correctAnswer": "escreveu A Odisséia, grande epopéia que narra a viagem de Vasco da Gama às Índias.",
+    "wrongAnswer": [
+      "compôs poemas líricos, cuja temática era apoiada na visão platônica do amor.",
+      "escreveu Os Lusíadas, o maior poema épico da língua portuguesa, que narra as aventuras de Ulisses em sua viagem para Tróia.",
+      "compôs poemas religiosos, cujas figuras de linguagem predominantes são a antítese e a metáfora."
+    ]
+  },
+  {
+    "topic": "Trovadorismo",
+    "question": "Interpretando historicamente a relação de vassalagem entre homem amante/mulher amada, ou mulher amante/homem amado, pode-se afirmar que:",
+    "correctAnswer": "o Trovadorismo corresponde ao Renascimento.",
+    "wrongAnswer": [
+      "o Trovadorismo corresponde ao movimento humanista.",
+      "o Trovadorismo corresponde ao Feudalismo.",
+      "o Trovadorismo e o Medievalismo só poderiam ser provençais."
+    ]
+  },
+  {
+    "topic": "Barroco",
+    "question": "As iniciativas de descrever a natureza, arrolar os seus bens e historiar a vida ainda breve da Colônia estão documentadas no gênero que se conhece como",
+    "correctAnswer": "apologia barroca.",
+    "wrongAnswer": [
+      "sátira maneirista.",
+      "catequese jesuítica.",
+      "literatura de informação."
+    ]
+  },
+  {
+    "topic": "Barroco",
+    "question": "Sobre as estéticas literárias, Arcadismo e Barroco, assinale a alternativa correta.",
+    "correctAnswer": "Nas poesias do Barroco há predominância da linguagem simples, que tratam do distanciamento da mulher amada, enquanto que na poesia do Arcadismo há predominância de figuras de linguagem, como antítese e paradoxo, e de versos da ordem indireta.",
+    "wrongAnswer": [
+      "A poesia lírico-amorosa do Padre Antônio Vieira é fortemente marcada pelo dualismo amoroso, carne/espírito, que leva a um sentimento de culpa no plano espiritual.",
+      "Gregório de Matos, também conhecido como Boca do Inferno por suas poesias satíricas, é autor do Barroco.",
+      "No Arcadismo brasileiro, há o abandono da linguagem pastoril, com valorização da vida urbana e crítica direta aos políticos do Brasil colônia."
+    ]
+  },
+  {
+    "topic": "Triângulo equilátero ",
+    "question": "Em um triângulo equilátero ABC inscreve-se um quadrado MNOP de área 3 m². Sabe-se o lado MN está contido em AC, o ponto P pertence a AB e o ponto O pertence a BC. Nessas condições, a área, em m², do triângulo ABC mede: ",
+    "correctAnswer": "(7√3 + 6)/4",
+    "wrongAnswer": ["(7√3 + 6)/2", "(7√3 + 12)/4", "(21√3 + 18)/2"]
+  },
+  {
+    "topic": "Triângulo equilátero ",
+    "question": "O quadrado da altura de um triângulo equilátero é exatamente 300. O perímetro desse triângulo, em uma determinada unidade de medida, é",
+    "correctAnswer": "60.",
+    "wrongAnswer": ["50.", "30.", "20."]
+  },
+  {
+    "topic": "Triângulo equilátero ",
+    "question": "A respeito dos elementos de um triângulo equilátero inscrito em uma circunferência, assinale a alternativa verdadeira:",
+    "correctAnswer": "Os ângulos centrais definidos pelos raios do triângulo equilátero inscrito medem 120°.",
+    "wrongAnswer": [
+      "Os ângulos centrais definidos pelos raios do triângulo equilátero inscrito medem 60°.",
+      "Os ângulos centrais definidos pelos raios do triângulo equilátero inscrito medem 30°.",
+      "O apótema de um triângulo equilátero inscrito é o segmento que vai do seu centro até a borda da circunferência."
+    ]
+  },
+  {
+    "topic": "água e sais minerais",
+    "question": "Os principais elementos metálicos presentes no corpo humano são cálcio, sódio, potássio e magnésio. Dentre esses elementos, o de maior raio atômico é encontrado, em maior quantidade, no seguinte fluido orgânico:",
+    "correctAnswer": "Biliar",
+    "wrongAnswer": ["Intersticial", "Plasmático", "Intracelular"]
+  },
+  {
+    "topic": "Carboidratos",
+    "question": "Os sais minerais são nutrientes essenciais para o funcionamento do nosso corpo. Entre as alternativas a seguir, marque aquela que indica um sal que faz parte da composição da hemoglobina.",
+    "correctAnswer": "Potássio.",
+    "wrongAnswer": ["Iodo.", "Ferro.", "Zinco."]
+  },
+  {
+    "topic": "Carboidratos",
+    "question": "(Unifor-CE) As fibras musculares estriadas armazenam um carboidrato a partir do qual se obtém energia para a contração. Essa substância de reserva se encontra na forma de:",
+    "correctAnswer": "Amido",
+    "wrongAnswer": ["Glicose", "Maltose", "Sacarose"]
+  },
+  {
+    "topic": "Carboidratos",
+    "question": "(Uerj) O papel comum é formado, basicamente, pelo polissacarídeo mais abundante no planeta. Este carboidrato, nas células vegetais, tem a seguinte função:",
+    "correctAnswer": "Revestir as organelas.",
+    "wrongAnswer": [
+      "Formar a membrana plasmática.",
+      "Compor a estrutura da parede celular.",
+      "Acumular reserva energética no hialoplasma."
+    ]
+  },
+  {
+    "topic": "Carboidratos",
+    "question": "I – O esqueleto externo dos insetos é composto de um polissacarídeo. II – As células vegetais possuem uma parede formada por polipeptídeos III – Os favos das colmeias são constituídos por lipídios. IV – As unhas são impregnadas de polissacarídeos que as deixam rígidas e impermeabilizadas. Estão corretas as afirmativas",
+    "correctAnswer": "I e II.",
+    "wrongAnswer": ["I e III.", "I e IV.", "II e III.", "II e IV."]
+  },
+  {
+    "topic": "ângulos",
+    "question": "(OCM) No triângulo ABC, os pontos D e E estão sobre os lados BC e AC, respectivamente. Se AB = AC, AE = AD, e o ângulo CDE =15º . Então o ângulo BAD é igual a:",
+    "correctAnswer": "20°",
+    "wrongAnswer": ["40°", "30°", "35°"]
+  },
+  {
+    "topic": "ângulos",
+    "question": "CEFET-CE 2004 - Sabendo-se que a soma de dois ângulos é 78° e um deles vale 3/5 do complemento do outro, os valores são:",
+    "correctAnswer": "10° e 68°",
+    "wrongAnswer": ["15° e 63°", "16° e 62°", "18° e 60°"]
+  }
+]

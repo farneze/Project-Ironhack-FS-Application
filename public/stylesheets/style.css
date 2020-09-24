@@ -4,6 +4,14 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+.invisible {
+  margin: 0 !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 0% !important;
+  height: 0% !important;
+}
+
 a {
   color: #00b7ff;
   text-decoration: none !important;
@@ -122,24 +130,23 @@ ul li {
   margin-bottom: 0 !important;
 }
 
-footer{
+footer {
   margin-top: 100px;
   display: flex;
   flex-direction: column-reverse;
 }
 
-.developersBlock{
+.developersBlock {
   display: flex;
   flex-direction: column;
 }
 
-
-.devs{
+.devs {
   display: flex;
   flex-direction: column;
 }
 
-.footerDiv{
+.footerDiv {
   display: flex;
   /* flex-direction: column; */
 }

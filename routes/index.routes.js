@@ -10,11 +10,31 @@ const User = require("../models/User.model");
 const Subject = require("../models/Subjects.model");
 const Question = require("../models/Question.model");
 
-const userList = require("./users.json");
+const userList = require("../json/users.json");
+const questionList = require("../json/questions.json");
+const subjectList = require("../json/subjects.json");
 
 router.get("/addUserList", async (req, res) => {
   try {
     const result = await User.create(userList);
+    res.render("auth/profile");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/addsubjects", async (req, res) => {
+  try {
+    const result = await Subject.create(subjectList);
+    res.render("auth/profile");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/addquestions", async (req, res) => {
+  try {
+    const result = await Question.create(questionList);
     res.render("auth/profile");
   } catch (err) {
     console.log(err);
@@ -32,24 +52,11 @@ router.get("/minimsg", async (req, res) => {
   //   console.log(err);
   // }
 });
-//pop...noice!
-
-router.get("/addsubjects", async (req, res) => {
-  const result = await Subject.create(
-    { subject: "Biologia", classs: "TemaBio1", topic: "TopicoTemaBio11" },
-    { subject: "Biologia", classs: "TemaBio1", topic: "TopicoTemaBio12" },
-    { subject: "Biologia", classs: "TemaBio2", topic: "TopicoTemaBio21" },
-    { subject: "Biologia", classs: "TemaBio2", topic: "TopicoTemaBio22" },
-    { subject: "História", classs: "TemaHist1", topic: "TopicoTemaHist11" },
-    { subject: "História", classs: "TemaHist1", topic: "TopicoTemaHist12" },
-    { subject: "História", classs: "TemaHist2", topic: "TopicoTemaHist21" },
-    { subject: "História", classs: "TemaHist2", topic: "TopicoTemaHist22" }
-  );
-});
 
 /* GET home page */
 router.get("/", (req, res) => res.render("index", { title: "Meu saiti 🚀" }));
 
+// =========== AUTH SYSTEM  ===========
 // Servir o formulario de cadastro de usuario
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
@@ -57,8 +64,6 @@ router.get("/signup", (req, res) => {
 
 // Receber os dados do formulario de cadastro de usuario
 router.post("/signup", async (req, res) => {
-  console.log(req.body);
-
   // Extrair informacoes recebidas da requisicao http que veio do navegador
   const { username, nickname, email, password } = req.body;
 
@@ -101,8 +106,6 @@ router.post("/signup", async (req, res) => {
     // Gerar o hash utilizando o salt criado anteriormente e o que o usuario escreveu no campo senha no navegador
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    console.log("Hashed password => ", hashedPassword);
-
     // Cria o usuario no banco, passando a senha criptografada
     const result = await User.create({
       username,
@@ -113,12 +116,9 @@ router.post("/signup", async (req, res) => {
       userTopics: [],
       userQuestions: [],
     });
-
     // Redireciona para o formulario novamente
     // https://stackoverflow.com/questions/17612695/expressjs-how-to-redirect-a-post-request-with-parameters/17612942
     res.redirect(307, "/login");
-
-    console.log(result);
   } catch (err) {
     console.error(err);
     // Mensagem de erro para exibir erros de validacao do Schema do Mongoose
@@ -162,27 +162,12 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-// QUESTIONS SYSTEM - get and post routes
-router.get("/addnewquestion", async (req, res) => {
-  let subject = await Subject.find({}, { subject: 1, _id: 0 });
-  let classs = await Subject.find({}, { classs: 1, _id: 0 });
-  let topic = await Subject.find({}, { topic: 1, _id: 0 });
-
-  subject = subject
-    .map((el) => el.subject)
-    .filter((el, i, arr) => el != arr[i + 1]);
-  classs = classs
-    .map((el) => el.classs)
-    .filter((el, i, arr) => el != arr[i + 1]);
-  topic = topic.map((el) => el.topic).filter((el, i, arr) => el != arr[i + 1]);
-
-  res.render("questions/addQuestion", { subject, classs, topic });
-});
-
+// =========== QUESTIONS SYSTEM  ===========
 router.get("/queryquestion", async (req, res) => {
   let subject = req.query.subject;
   let classs = req.query.classs;
   let topic = req.query.topic;
+  let show = req.query.show;
 
   if (req.query.subject == undefined) {
     subject = await Subject.find({}, { subject: 1, _id: 0 });
@@ -191,7 +176,11 @@ router.get("/queryquestion", async (req, res) => {
       .sort()
       .filter((el, i, arr) => el != arr[i + 1]);
     subject.unshift("Select subject");
-    res.render("questions/addQuestion", { subject });
+    if (show) {
+      res.render("questions/viewQuestions", { show, subject });
+    } else {
+      res.render("questions/addQuestion", { subject });
+    }
   } else if (req.query.classs == undefined) {
     classs = await Subject.find({ subject: subject }, { classs: 1, _id: 0 });
     classs = classs
@@ -200,7 +189,11 @@ router.get("/queryquestion", async (req, res) => {
       .filter((el, i, arr) => el != arr[i + 1]);
     subject = [subject];
     classs.unshift("Select class");
-    res.render("questions/addQuestion", { subject, classs });
+    if (show) {
+      res.render("questions/viewQuestions", { show, subject, classs });
+    } else {
+      res.render("questions/addQuestion", { subject, classs });
+    }
   } else if (req.query.topic == undefined) {
     topic = await Subject.find(
       { subject: subject, classs: classs },
@@ -213,35 +206,35 @@ router.get("/queryquestion", async (req, res) => {
     subject = [subject];
     classs = [classs];
     topic.unshift("Select topic");
-    res.render("questions/addQuestion", { subject, classs, topic });
+    if (show) {
+      res.render("questions/viewQuestions", { show, subject, classs, topic });
+    } else {
+      res.render("questions/addQuestion", { subject, classs, topic });
+    }
   } else {
     subject = [subject];
     classs = [classs];
     topic = [topic];
-    res.render("questions/addQuestion", {
-      subject,
-      classs,
-      topic,
-      myBool: true,
-    });
+    if (show) {
+      res.render("questions/viewQuestions", {
+        subject,
+        classs,
+        topic,
+        myBool: true,
+      });
+    } else {
+      res.render("questions/addQuestion", {
+        subject,
+        classs,
+        topic,
+        myBool: true,
+      });
+    }
   }
 });
 
-router.post("/addnewquestion", async (req, res) => {
-  let {
-    subject,
-    classs,
-    topic,
-    question,
-    correctAnswer,
-    ...wrongAnswer
-  } = req.body;
-  console.log(subject);
-  console.log(classs);
-  console.log(topic);
-  console.log(question);
-  console.log(correctAnswer);
-  console.log(wrongAnswer);
+router.post("/queryquestion", async (req, res) => {
+  let { topic, question, correctAnswer, ...wrongAnswer } = req.body;
   wrongAnswer = wrongAnswer.wrongAnswer;
   try {
     const newQuestion = await Question.create({
@@ -253,15 +246,41 @@ router.post("/addnewquestion", async (req, res) => {
 
     // Redireciona para o formulario novamente
     // res.redirect("/signup");
-    // res.redirect(307, "/login");
+    res.redirect("/queryquestion");
 
-    console.log(result);
+    // console.log(result);
   } catch (err) {
     console.error(err);
   }
 });
 
-//SUBJECT SYSTEM - routes related to it
+router.get("/searchquestions", async (req, res) => {
+  let subject = req.query.subject;
+  let classs = req.query.classs;
+  let topic = req.query.topic;
+  let show = req.query.show;
+  console.log({ subject, classs, topic, show });
+  try {
+    console.log("eitcha!");
+    const questions = await Question.find({ topic: topic });
+    res.render("questions/viewQuestions", {
+      subject,
+      classs,
+      topic,
+      show,
+      myBool: true,
+      questions,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/viewquestion", async (req, res) => {
+  res.render("questions/viewQuestions"); //, { subject, classs, topic });
+  // console.log(req.body);
+});
+// =========== SUBJECT SYSTEM  ===========
 router.get("/querysubjects", async (req, res) => {
   let subject = req.query.subject;
   let classs = req.query.classs;
@@ -364,7 +383,7 @@ router.get("/deletesubjects", async (req, res) => {
   }
 });
 
-// FRIENDS SYSTEM - routes related
+// =========== FRIENDS SYSTEM  ===========
 router.get("/addfriend", (req, res) => {
   res.render("addFriend");
 });

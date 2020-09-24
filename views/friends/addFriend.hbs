@@ -5,19 +5,8 @@
   <label>Name of User</label>
   <input type="text" name="name">
   {{!-- Mensagem de erro para validacao do formulario --}}
-  {{#if subject}}
-  {{> errorPartial subject}}
-  {{/if}}
-
   
 
   <button type="submit">Add Friend</button>
   
-  {{#if errorMessage}}
-  {{> errorPartial errorMessage}}
-  {{/if}}
-
-  {{#if successMessage}}
-  {{> successPartial successMessage}}
-  {{/if}}
 </form>
