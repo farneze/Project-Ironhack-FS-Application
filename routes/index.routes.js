@@ -161,12 +161,7 @@ router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
-
-<<<<<<< HEAD
 // =========== QUESTIONS SYSTEM  ===========
-=======
-// QUESTIONS SYSTEM - get and post routes
->>>>>>> e35b85ddf62c2046871946614db2215fa2241cf3
 router.get("/queryquestion", async (req, res) => {
   let subject = req.query.subject;
   let classs = req.query.classs;
@@ -176,12 +171,8 @@ router.get("/queryquestion", async (req, res) => {
   if (req.query.subject == undefined) {
     subject = await Subject.find({}, { subject: 1, _id: 0 });
     subject = subject
-<<<<<<< HEAD
       .map((el) => el.subject)
       .sort()
-=======
-      .map((el) => el.subject).sort()
->>>>>>> e35b85ddf62c2046871946614db2215fa2241cf3
       .filter((el, i, arr) => el != arr[i + 1]);
     subject.unshift("Select subject");
     if (show) {
@@ -192,12 +183,8 @@ router.get("/queryquestion", async (req, res) => {
   } else if (req.query.classs == undefined) {
     classs = await Subject.find({ subject: subject }, { classs: 1, _id: 0 });
     classs = classs
-<<<<<<< HEAD
       .map((el) => el.classs)
       .sort()
-=======
-      .map((el) => el.classs).sort()
->>>>>>> e35b85ddf62c2046871946614db2215fa2241cf3
       .filter((el, i, arr) => el != arr[i + 1]);
     subject = [subject];
     classs.unshift("Select class");
@@ -212,12 +199,8 @@ router.get("/queryquestion", async (req, res) => {
       { topic: 1, _id: 0 }
     );
     topic = topic
-<<<<<<< HEAD
       .map((el) => el.topic)
       .sort()
-=======
-      .map((el) => el.topic).sort()
->>>>>>> e35b85ddf62c2046871946614db2215fa2241cf3
       .filter((el, i, arr) => el != arr[i + 1]);
     subject = [subject];
     classs = [classs];
@@ -250,23 +233,7 @@ router.get("/queryquestion", async (req, res) => {
 });
 
 router.post("/queryquestion", async (req, res) => {
-<<<<<<< HEAD
   let { topic, question, correctAnswer, ...wrongAnswer } = req.body;
-=======
-  
-  console.log(req.body)
-  
-  let {
-    topic,
-    question,
-    correctAnswer,
-    ...wrongAnswer
-  } = req.body;
-  console.log(topic);
-  console.log(question);
-  console.log(correctAnswer);
-  console.log(wrongAnswer);
->>>>>>> e35b85ddf62c2046871946614db2215fa2241cf3
   wrongAnswer = wrongAnswer.wrongAnswer;
   try {
     const newQuestion = await Question.create({
@@ -275,7 +242,6 @@ router.post("/queryquestion", async (req, res) => {
       correctAnswer,
       wrongAnswer,
     });
-    
 
     // Redireciona para o formulario novamente
     // res.redirect("/signup");
