@@ -13,12 +13,20 @@ const questSchema = new Schema(
     question: {
       type: String,
       required: [true, "Question is required."],
+<<<<<<< HEAD
+=======
+      lowercase: true,
+>>>>>>> e35b85ddf62c2046871946614db2215fa2241cf3
       trim: true,
     },
 
     correctAnswer: {
       type: String,
       required: [true, "Correct answer is required."],
+<<<<<<< HEAD
+=======
+      lowercase: true,
+>>>>>>> e35b85ddf62c2046871946614db2215fa2241cf3
       trim: true,
     },
 
@@ -26,7 +34,10 @@ const questSchema = new Schema(
     wrongAnswer: {
       type: [String],
       required: [true, "Wrong answers are required."],
+<<<<<<< HEAD
       trim: true,
+=======
+>>>>>>> e35b85ddf62c2046871946614db2215fa2241cf3
     },
   },
   {
