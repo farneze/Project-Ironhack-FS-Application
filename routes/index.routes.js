@@ -242,12 +242,7 @@ router.post("/queryquestion", async (req, res) => {
       correctAnswer,
       wrongAnswer,
     });
-
-    // Redireciona para o formulario novamente
-    // res.redirect("/signup");
     res.redirect("/queryquestion");
-
-    // console.log(result);
   } catch (err) {
     console.error(err);
   }
@@ -258,17 +253,31 @@ router.get("/searchquestions", async (req, res) => {
   let classs = req.query.classs;
   let topic = req.query.topic;
   let show = req.query.show;
-  console.log({ subject, classs, topic, show });
+  subject = [subject];
+  classs = [classs];
+  topic = [topic];
+  // console.log({ subject, classs, topic, show });
   try {
-    console.log("eitcha!");
-    const questions = await Question.find({ topic: topic });
+    let questionsQuery = await Question.find({ topic: topic });
+    let questions = [];
+    questionsQuery.forEach((el) => {
+      let answers = [];
+      let { wrongAnswer, id, topic, question, correctAnswer, ...trash } = el;
+      wrongAnswer.forEach((el) => answers.push(el));
+      answers.push(correctAnswer);
+      let randomizedAnswers = randomizeAnswer(answers);
+      let newQuestion = new Object({ id, topic, question, randomizedAnswers });
+      questions.push(newQuestion);
+    });
+
+    console.log(questions);
     res.render("questions/viewQuestions", {
+      show,
       subject,
       classs,
       topic,
-      show,
-      myBool: true,
       questions,
+      myBool: true,
     });
   } catch (err) {
     console.log(err);
@@ -396,3 +405,15 @@ router.get("/about", (req, res) => {
 });
 
 module.exports = router;
+
+function randomizeAnswer(answers) {
+  let randomIndex = [...new Array(4)].map((el, i) =>
+    Math.floor(Math.random() * (4 - i))
+  );
+  let randomAnswers = [];
+  randomIndex.forEach((el) => {
+    randomAnswers.push(answers[el]);
+    answers.splice(el, 1);
+  });
+  return randomAnswers;
+}

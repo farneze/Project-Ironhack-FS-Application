@@ -59,11 +59,13 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
   
 </form>
  
-{{!-- TODO --}}
 <form action="/viewquestion" method="POST">
   {{#if myBool}} 
-      {{> partialQuestion questions}}
+      {{> aPartialQuestion questions }}
+      <h4> === </h4>
   {{/if}}
+    
+
 </form>
 
 
