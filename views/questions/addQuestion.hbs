@@ -7,7 +7,6 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
 
 
 <form action="/queryquestion" method="GET">
-  <h1>ADD</h1>
 
   <div class="form-group">
       <select id="inputSubject" class="form-control" name="subject" onchange="this.form.submit()">
@@ -48,9 +47,14 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
         {{/each}}
       {{/if}}
 
-
       <label>Question</label>
-      <textarea type="text" name="question" rows="4" class="form-control" ></textarea>
+      <h1>{{question}}</h1>
+      {{#if question}}
+        <textarea type="text" name="question" rows="4" class="form-control" value="{{question}}">{{question}}</textarea>
+      {{else}}
+        <textarea type="text" name="question" rows="4" class="form-control" value="{{question}}">{{question}}</textarea>
+      {{/if}}
+      
       {{#if question}}
       {{> errorPartial question}}
       {{/if}}

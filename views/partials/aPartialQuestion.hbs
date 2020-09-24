@@ -1,24 +1,33 @@
-{{#each questions}}
-    <h4>this</h4>
-    <h1>{{this}}</h1>
-    <h4>topic</h4>
-    <h1>{{this.topic}}</h1>
-    <h4>questions</h4>
-    <h1>{{questions}}</h1>
-    <h4>quetop</h4>
-    <h1>{{questions.topic}}</h1>
-{{/each}}
+
 {{#each this}}
-    <h4>this</h4>
-    <h1>{{this}}</h1>
-    <h4>topic</h4>
-    <h1>{{this.topic}}</h1>
-    <h4>questions</h4>
-    <h1>{{questions}}</h1>
-    <h4>quetop</h4>
-    <h1>{{questions.topic}}</h1>
-    <h4>this.0</h4>
-    <h1>{{this.0}}</h1>
-    <h4>que.0</h4>
-    <h1>{{questions.0}}</h1>
+    <div class="question">
+        {{#if @index}}
+            <h4>{{@index}}. {{this.question}}</h4>
+            <ol type="a">
+            {{#each this.randomizedAnswers}}
+                {{#if @index}}
+                    
+                        <li><h5>{{this}}</h5></li>
+                {{/if}}
+                
+            {{/each}}
+            </ol>
+            <div>
+                <a href="/editquestion?questionID={{this.id}}" class="pb-2 mb-2 btn btn-info" role="button">Edit</a>
+                <a href="/deletequestion?questionID={{this.id}}" class="pb-2 mb-2 btn btn-info" role="button">Delete</a>
+            </div>
+        {{/if}}
+    </div>
 {{/each}}
+{{!-- 
+<div class="form-check">
+    {{#each this.randomizedAnswers}}
+        <input class="form-check-input" type="radio" name="{{this.id}}" id="exampleRadios1" value="{{this}}">
+        <label class="form-check-label" for="options">
+            {{this}}
+        </label>
+    {{/each}}
+</div> --}}
+{{!-- class="alternatives" --}}
+
+{{!-- class="question" --}}

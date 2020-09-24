@@ -61,11 +61,11 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
  
 <form action="/viewquestion" method="POST">
   {{#if myBool}} 
+      <h3>{{questions.1.topic}}</h3>
       {{> aPartialQuestion questions }}
-      <h4> === </h4>
   {{/if}}
     
-
+  {{!-- <button type="submit">Enviar</button> --}}
 </form>
 
 

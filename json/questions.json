@@ -118,19 +118,19 @@
     ]
   },
   {
-    "topic": "Triângulo equilátero ",
+    "topic": "Triângulo equilátero",
     "question": "Em um triângulo equilátero ABC inscreve-se um quadrado MNOP de área 3 m². Sabe-se o lado MN está contido em AC, o ponto P pertence a AB e o ponto O pertence a BC. Nessas condições, a área, em m², do triângulo ABC mede: ",
     "correctAnswer": "(7√3 + 6)/4",
     "wrongAnswer": ["(7√3 + 6)/2", "(7√3 + 12)/4", "(21√3 + 18)/2"]
   },
   {
-    "topic": "Triângulo equilátero ",
+    "topic": "Triângulo equilátero",
     "question": "O quadrado da altura de um triângulo equilátero é exatamente 300. O perímetro desse triângulo, em uma determinada unidade de medida, é",
     "correctAnswer": "60.",
     "wrongAnswer": ["50.", "30.", "20."]
   },
   {
-    "topic": "Triângulo equilátero ",
+    "topic": "Triângulo equilátero",
     "question": "A respeito dos elementos de um triângulo equilátero inscrito em uma circunferência, assinale a alternativa verdadeira:",
     "correctAnswer": "Os ângulos centrais definidos pelos raios do triângulo equilátero inscrito medem 120°.",
     "wrongAnswer": [

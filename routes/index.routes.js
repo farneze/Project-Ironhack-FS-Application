@@ -10,6 +10,8 @@ const User = require("../models/User.model");
 const Subject = require("../models/Subjects.model");
 const Question = require("../models/Question.model");
 
+const querystring = require("querystring");
+
 const userList = require("../json/users.json");
 const questionList = require("../json/questions.json");
 const subjectList = require("../json/subjects.json");
@@ -167,6 +169,10 @@ router.get("/queryquestion", async (req, res) => {
   let classs = req.query.classs;
   let topic = req.query.topic;
   let show = req.query.show;
+  // let wrongAnswer = req.query.wrongAnswer;
+  // let id = req.query.id;
+  // let question = req.query.question;
+  // let correctAnswer = req.query.correctAnswer;
 
   if (req.query.subject == undefined) {
     subject = await Subject.find({}, { subject: 1, _id: 0 });
@@ -266,11 +272,12 @@ router.get("/searchquestions", async (req, res) => {
       wrongAnswer.forEach((el) => answers.push(el));
       answers.push(correctAnswer);
       let randomizedAnswers = randomizeAnswer(answers);
+      randomizedAnswers.unshift("");
       let newQuestion = new Object({ id, topic, question, randomizedAnswers });
       questions.push(newQuestion);
     });
-
-    console.log(questions);
+    questions.unshift(new Object({}));
+    // console.log(questions);
     res.render("questions/viewQuestions", {
       show,
       subject,
@@ -287,6 +294,54 @@ router.get("/searchquestions", async (req, res) => {
 router.get("/viewquestion", async (req, res) => {
   res.render("questions/viewQuestions"); //, { subject, classs, topic });
   // console.log(req.body);
+});
+
+router.get("/editquestion", async (req, res) => {
+  let questionID = req.query.questionID;
+
+  try {
+    const requestResult = await Question.find({ _id: questionID });
+    const {
+      wrongAnswer,
+      id,
+      question,
+      correctAnswer,
+      ...trash
+    } = requestResult;
+    let searchResult = await Subject.find({ topic: requestResult[0].topic });
+    const subject = [searchResult[0].subject];
+    const classs = [searchResult[0].classs];
+    const topic = [searchResult[0].topic];
+
+    res.render("questions/addQuestion", {
+      subject,
+      classs,
+      topic,
+      wrongAnswer,
+      id,
+      question,
+      correctAnswer,
+      myBool: true,
+    });
+    // console.log(subject)
+    // console.log(classs)
+    // console.log(topic)
+    // res.redirect("queryquestion?" + query);
+    // res.redirect("/?" + query);
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+router.get("/deletequestion", async (req, res) => {
+  let questionID = req.query.questionID;
+  try {
+    // let result = await Question.deleteOne({ _id: questionID });
+    console.log(result);
+    res.redirect("questions/viewquestion");
+  } catch (err) {
+    console.log(err);
+  }
 });
 // =========== SUBJECT SYSTEM  ===========
 router.get("/querysubjects", async (req, res) => {
