@@ -54,7 +54,7 @@ router.get("/minimsg", async (req, res) => {
 });
 
 /* GET home page */
-router.get("/", (req, res) => res.render("index", { title: "Meu saiti 🚀" }));
+router.get("/", (req, res) => res.render("index", { title: "Quester 🚀" }));
 
 // =========== AUTH SYSTEM  ===========
 // Servir o formulario de cadastro de usuario
