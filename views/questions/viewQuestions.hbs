@@ -3,20 +3,20 @@ ao banco de dados. Ele receberá cada uma das ropriedades
 necessárias e enviará como metodo "post" para o indexRoutes --}}
 <h1>{{title}}</h1>
 
-<form action="/queryquestion?show=true" method="GET">
+<form class="question" action="/queryquestion?show=true" method="GET">
   {{#if show}}
           <input class="form-control invisible" name="show" type="text" value="{{show}}"></input>
   {{/if}}
 
   <div class="form-group">
-    <select id="inputSubject" class="form-control" name="subject" onchange="this.form.submit()">
+    <select id="inputSubject" class="form-control h4" name="subject" onchange="this.form.submit()">
         {{#each subject}}
             <option value="{{this}}">{{this}}</option>
         {{/each}}
     </select>
 
     {{#if classs}}
-      <select id="inputClass" class="form-control" name="classs" onchange="this.form.submit()">
+      <select id="inputClass" class="form-control h4" name="classs" onchange="this.form.submit()">
           {{#each classs}}
               <option value="{{this}}">{{this}}</option>
           {{/each}}
@@ -24,7 +24,7 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
     {{/if}}
 
     {{#if topic}}
-      <select id="inputTopic" class="form-control" name="topic" onchange="this.form.submit()">
+      <select id="inputTopic" class="form-control h4" name="topic" onchange="this.form.submit()">
           {{#each topic}}
               <option value="{{this}}">{{this}}</option>
           {{/each}}
@@ -36,31 +36,24 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
 </form>
 
 
-<form action="/searchquestions" method="POST">
-  <a href="/searchquestions?show=true&subject={{subject}}&classs={{classs}}&topic={{topic}}" class="pb-2 mb-2 btn btn-info" role="button">Search</a>
-  
-  {{#if subject}}
-      {{#each subject}}
-          <input class="form-control invisible" name="subject" type="text" value="{{this}}"></input>
-      {{/each}}
-  {{/if}}
-  {{#if classs}}
-      {{#each classs}}
-          <input class="form-control invisible" name="classs" type="text" value="{{this}}"></input>
-      {{/each}}
-  {{/if}}
-  {{#if topic}}
-      {{#each topic}}
-         <input class="form-control invisible" name="topic" type="text" value="{{this}}"></input>
-      {{/each}}
-  {{/if}}
-  
-  
-</form>
+<div class="search">
+  <form action="/searchquestions" method="POST">
+    <a href="/searchquestions?show=true&subject={{subject}}&classs={{classs}}&topic={{topic}}" class="pb-2 mb-2 btn btn-info" role="button">Search</a>
+    {{#if subject}}
+            <input class="form-control invisible" name="subject" type="text" value="{{subject}}"></input>
+    {{/if}}
+    {{#if classs}}
+            <input class="form-control invisible" name="classs" type="text" value="{{classs}}"></input>
+    {{/if}}
+    {{#if topic}}
+          <input class="form-control invisible" name="topic" type="text" value="{{topic}}"></input>
+    {{/if}}
+  </form>
+</div>
  
 <form action="/viewquestion" method="POST">
   {{#if myBool}} 
-      <h3>{{questions.1.topic}}</h3>
+      <h3 class=" question">{{questions.1.topic}}</h3>
       {{> aPartialQuestion questions }}
   {{/if}}
     

@@ -7,8 +7,8 @@
 <form action="/taketest" method="POST">
 
   {{#each testQuestions}}
-    <div class="question">
-        {{#if @index}}
+    {{#if @index}}
+      <div class="question">
             <h4 class="ques">{{@index}}. {{this.question}}</h4>
             <div class="form-check">
                 <input class="form-check-input radio" type="radio" name="{{this.id}}" id="1+{{this.id}}" value="{{this.randomizedAnswers.[1]}}">
@@ -35,8 +35,9 @@
                 </label>
             </div>
             
+      </div>
         {{/if}}
-    </div>
+
     {{/each}}
 
   <div>

@@ -1,21 +1,19 @@
 
 {{#each this}}
-    <div class="question">
-        {{#if @index}}
+    {{#if @index}}
+        <div class="question">
             <h4>{{@index}}. {{this.question}}</h4>
             <ol type="a">
             {{#each this.randomizedAnswers}}
                 {{#if @index}}
-                    
-                        <li><h5>{{this}}</h5></li>
+                    <li><h5>{{this}}</h5></li>
                 {{/if}}
-                
             {{/each}}
             </ol>
             <div>
                 <a href="/editquestion?questionID={{this.id}}" class="pb-2 mb-2 btn btn-info" role="button">Edit</a>
                 <a href="/deletequestion?questionID={{this.id}}" class="pb-2 mb-2 btn btn-info" role="button">Delete</a>
             </div>
-        {{/if}}
-    </div>
+        </div>
+    {{/if}}
 {{/each}}

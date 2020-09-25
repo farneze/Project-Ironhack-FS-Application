@@ -4,88 +4,76 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
 <h1>{{title}}</h1>
 
 
+<form class="question" action="/queryquestion" method="GET">
 
-<form action="/queryquestion" method="GET">
-
-  <div class="form-group">
-      <select id="inputSubject" class="form-control" name="subject" onchange="this.form.submit()">
-          {{#each subject}}
-              <option value="{{this}}">{{this}}</option>
-          {{/each}}
-      </select>
-
-      {{#if classs}}
-        <select id="inputClass" class="form-control" name="classs" onchange="this.form.submit()">
-            {{#each classs}}
+    <div class="form-group">
+        <select id="inputSubject" class="form-control" name="subject" onchange="this.form.submit()">
+            {{#each subject}}
                 <option value="{{this}}">{{this}}</option>
             {{/each}}
         </select>
-      {{/if}}
+        {{#if classs}}
+            <select id="inputClass" class="form-control" name="classs" onchange="this.form.submit()">
+                {{#each classs}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        {{/if}}
+        {{#if topic}}
+            <select id="inputTopic" class="form-control" name="topic" onchange="this.form.submit()">
+                {{#each topic}}
+                    <option value="{{this}}">{{this}}</option>
+                {{/each}}
+            </select>
+        {{/if}}
+    </div>
 
-      {{#if topic}}
-        <select id="inputTopic" class="form-control" name="topic" onchange="this.form.submit()">
-            {{#each topic}}
-                <option value="{{this}}">{{this}}</option>
-            {{/each}}
-        </select>
-      {{/if}}
-
-
-  </div>
   <a href="/queryquestion" class="pb-2 mb-2 btn btn-info" role="button">Reload</a>
 
-  </form>
+</form>
 
   {{#if myBool}}
-
-    <form action="/queryquestion" method="POST">
-
+    <form class="question" action="/queryquestion" method="POST">
       {{#if topic}}
                 <input class="form-control invisible" name="topic" type="text" value="{{topic}}"></input>
       {{/if}}
-
       {{#if id}}
                 <input class="form-control invisible" name="id" type="text" value="{{id}}"></input>
       {{/if}}
 
-      <label>Question</label>
+      <label class="h3 pb-3">Question</label>
       
       {{#if question}}
-        <textarea type="text" name="question" rows="4" class="form-control" value="{{question}}">{{question}}</textarea>
+        <textarea type="text" name="question" rows="4" class="form-control border border-secondary" value="{{question}}">{{question}}</textarea>
       {{else}}
-        <textarea type="text" name="question" rows="4" class="form-control" value="{{question}}">{{question}}</textarea>
+        <textarea type="text" name="question" rows="4" class="form-control border border-secondary" value="{{question}}">{{question}}</textarea>
       {{/if}}
       
       {{!-- {{#if question}}
       {{> errorPartial question}}
       {{/if}} --}}
 
-      <label>Correct Answer</label>
-      <input class="form-control" type="text" name="correctAnswer" value="{{correctAnswer}}">
+      <input class="form-control border border-success mt-4 " type="text" name="correctAnswer" value="{{correctAnswer}}">
       {{!-- {{#if correctAnswer}}
       {{> errorPartial correctAnswer}}
       {{/if}}  --}}
       
       {{#if wrongAnswer}}
         {{#each wrongAnswer}}
-          <label>Wrong Answer</label>
-          <input class="form-control" type="text" name="wrongAnswer" value="{{this}}">
+          <input class="form-control border border-danger" type="text" name="wrongAnswer" value="{{this}}">
         {{/each}}
       {{else}}
-        <label>Wrong Answer</label>
-      <input class="form-control" type="text" name="wrongAnswer">
+      <input class="form-control border border-danger" type="text" name="wrongAnswer">
       {{!-- {{#if  wrongAnswers}}
       {{> errorPartial  wrongAnswers}}
       {{/if}}  --}}
 
-      <label>Wrong Answer</label>
-      <input class="form-control" type="text" name="wrongAnswer">
+      <input class="form-control border border-danger" type="text" name="wrongAnswer">
       {{!-- {{#if  wrongAnswers}}
       {{> errorPartial  wrongAnswers}}
       {{/if}}  --}}
 
-      <label>Wrong Answer</label>
-      <input class="form-control" type="text" name="wrongAnswer">
+      <input class="form-control border border-danger" type="text" name="wrongAnswer">
       {{!-- {{#if  wrongAnswers}}
       {{> errorPartial  wrongAnswers}}
       {{/if}}  --}}

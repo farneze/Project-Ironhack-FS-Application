@@ -475,14 +475,6 @@ router.post("/taketest", async (req, res) => {
   console.log(rightWrong);
 });
 
-// router.post("/taketest", async (req, res) => {
-//   let myBody = Object.entries(req.body);
-//   myBody.forEach
-//   rightWrong = [];
-
-//   console.log(myBody);
-// });
-
 module.exports = router;
 
 function generateTest(questions, number) {
@@ -528,25 +520,3 @@ function randomizeAnswer(answers) {
   });
   return randomAnswers;
 }
-// try {
-//   myBody.forEach(async (el, i) => {
-//     const requestResult = await Question.find({ _id: el[0] });
-//     const {
-//       wrongAnswer,
-//       id,
-//       question,
-//       correctAnswer,
-//       ...trash
-//     } = requestResult[0];
-//     console.log(el[1]);
-//     console.log(correctAnswer);
-
-//     el[1] == correctAnswer
-//       ? rightWrong.push([el[0], true])
-//       : rightWrong.push([el[0], false]);
-//   });
-//   console.log("rightWrong");
-//   console.log(rightWrong);
-// } catch (err) {
-//   console.log(err);
-// }

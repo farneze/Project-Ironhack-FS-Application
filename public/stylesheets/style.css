@@ -1,8 +1,7 @@
 body {
   padding: 50px 0 0;
-  background-color: #f5f5f5;
+  background-color: #eee;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
   margin-bottom: 30px;
 }
 
@@ -14,17 +13,46 @@ body {
   margin: 20px auto 20px !important;
   padding: 25px 20px !important;
   background-color: white;
+  /* border: 1px solid #00b7ff; */
   border: 1px solid #1c6ea4;
   border-radius: 19px;
-  -webkit-box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.45);
-  box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.45);
+  -webkit-box-shadow: 5px 5px 10px -2px rgba(0, 86, 179, 0.45);
+  box-shadow: 5px 5px 10px -2px rgba(0, 86, 179, 0.45);
+  /* -webkit-box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.45);
+  box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.45); */
+}
+
+.image {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.myCard {
+  margin: 20px 20px !important;
+  padding: 25px 20px !important;
+  background-color: white;
+  /* border: 1px solid #00b7ff; */
+  border: 1px solid #1c6ea4;
+  border-radius: 19px;
+  -webkit-box-shadow: 5px 5px 10px -2px rgba(0, 86, 179, 0.45);
+  box-shadow: 5px 5px 10px -2px rgba(0, 86, 179, 0.45);
+  /* -webkit-box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.45);
+  box-shadow: 5px 5px 10px -2px rgba(0, 0, 0, 0.45); */
 }
 
 .ques {
   text-align: justify !important;
   text-justify: inter-word !important;
 }
-
+.search {
+  margin: 0 !important;
+  border: 0 !important;
+  padding: 0 !important;
+  width: 0% !important;
+  height: 0% !important;
+}
 .form-check {
   margin: 1px 0;
   padding-left: 50px !important;

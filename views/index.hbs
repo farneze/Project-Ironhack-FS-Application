@@ -1,22 +1,34 @@
 
-    <section class="d-flex container justify-content-center mt-3 pt-3 ">
-        <div class="card mx-0 px-0 h-75">
-            <div class="card-body">
-                <img class="card-img-top w-25 rounded border-0 mx-auto d-block img-fluid img-thumbnail" src="/images/images.jpg" alt="Card image cap">
-                {{!-- <h5 class="card-title">{{title}}</h5> --}}
-                <h6 class="card-subtitle mb-2 text-muted">Olá! Seja bem vindo ao Quester! </h6>
-                <p class="card-text"> Aqui o nosso objetivo é ajudar os estudantes a treinarem para suas 
+    <section class="d-flex flex-column container justify-content-center mt-3 pt-3 ">
+        <div class="row card myCard">
+            <div class="col card-body">
+                <img class="image pb-6 card-img-top rounded-circle" src="/images/images.jpg" alt="Card image cap">
+                <h6 class="h4 card-subtitle my-4">Olá! Seja bem vindo ao Quester! </h6>
+                <p class="h4 card-text text-muted"> Aqui o nosso objetivo é ajudar os estudantes a treinarem para suas 
                     provas através de questões e troca de experiencias entre os próprios 
                     usuários. Você poderá utilizar do Quester para gerar simulados de 
                     questões, enviar mensagens para amigos e tirar duvidas sobre os 
                     exercícios que fez. Além disso é possível montar um simulado com as 
                     matérias e tópicos desejados para treinar pontos específicos de acordo 
                     com seu interesse.</p>
-                <p>Cadastre-se aqui e descubra tudo que o Quester pode te oferecer:</p>
+                <p class="h4 mb-4 text-muted">Cadastre-se aqui e descubra tudo que o Quester pode te oferecer:</p>
                 <div class="test">
-                    <a href="/signup" class="card-link btn btn-outline-primary">Cadastre-se Aqui</a>
+                    <a href="/signup" class="card-link btn btn-outline-primary btn-lg">Cadastre-se Aqui</a>
                 </div>
-                
+            </div>
+        </div>
+        <div class="row d-flex flex-row mt-4">
+            <div class="myCard col card mx-4 px-5" style="width: 18rem;">
+                <img class="image card-img-top rounded-circle" src="/images/arthur.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <p class="text-justify h4 card-text">Apaixonado por computação, tecnologia e games. Estudante de webdev na Ironhack!</p>
+                </div>
+            </div>
+            <div class="myCard col card mx-4 px-5" style="width: 18rem;">
+                <img class="image card-img-top rounded-circle" src="/images/yordan.jpg" alt="Card image cap">
+                <div class="card-body">
+                    <p class="text-justify h4 card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
             </div>
         </div>
     </section>
