@@ -42,52 +42,63 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
     <form action="/queryquestion" method="POST">
 
       {{#if topic}}
-        {{#each topic}}
-                <input class="form-control invisible" name="topic" type="text" value="{{this}}"></input>
-        {{/each}}
+                <input class="form-control invisible" name="topic" type="text" value="{{topic}}"></input>
+      {{/if}}
+
+      {{#if id}}
+                <input class="form-control invisible" name="id" type="text" value="{{id}}"></input>
       {{/if}}
 
       <label>Question</label>
-      <h1>{{question}}</h1>
+      
       {{#if question}}
         <textarea type="text" name="question" rows="4" class="form-control" value="{{question}}">{{question}}</textarea>
       {{else}}
         <textarea type="text" name="question" rows="4" class="form-control" value="{{question}}">{{question}}</textarea>
       {{/if}}
       
-      {{#if question}}
+      {{!-- {{#if question}}
       {{> errorPartial question}}
-      {{/if}}
+      {{/if}} --}}
 
       <label>Correct Answer</label>
-      <input class="form-control" type="text" name="correctAnswer" >
-      {{#if correctAnswer}}
+      <input class="form-control" type="text" name="correctAnswer" value="{{correctAnswer}}">
+      {{!-- {{#if correctAnswer}}
       {{> errorPartial correctAnswer}}
-      {{/if}} 
-    
-      <label>Wrong Answer</label>
+      {{/if}}  --}}
+      
+      {{#if wrongAnswer}}
+        {{#each wrongAnswer}}
+          <label>Wrong Answer</label>
+          <input class="form-control" type="text" name="wrongAnswer" value="{{this}}">
+        {{/each}}
+      {{else}}
+        <label>Wrong Answer</label>
       <input class="form-control" type="text" name="wrongAnswer">
-      {{#if  wrongAnswers}}
+      {{!-- {{#if  wrongAnswers}}
       {{> errorPartial  wrongAnswers}}
-      {{/if}} 
+      {{/if}}  --}}
 
       <label>Wrong Answer</label>
       <input class="form-control" type="text" name="wrongAnswer">
-      {{#if  wrongAnswers}}
+      {{!-- {{#if  wrongAnswers}}
       {{> errorPartial  wrongAnswers}}
-      {{/if}} 
+      {{/if}}  --}}
 
       <label>Wrong Answer</label>
       <input class="form-control" type="text" name="wrongAnswer">
-      {{#if  wrongAnswers}}
+      {{!-- {{#if  wrongAnswers}}
       {{> errorPartial  wrongAnswers}}
-      {{/if}} 
+      {{/if}}  --}}
+      {{/if}}
+      
+      
 
       
       <button type="submit">Salvar</button>
-      {{#if errorMessage}}
+      {{!-- {{#if errorMessage}}
       {{> errorPartial errorMessage}}
-      {{/if}}
+      {{/if}} --}}
 
     </form>
 

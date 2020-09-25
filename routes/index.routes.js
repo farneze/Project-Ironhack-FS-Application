@@ -5,12 +5,9 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 
-// Importar model de usuario
 const User = require("../models/User.model");
 const Subject = require("../models/Subjects.model");
 const Question = require("../models/Question.model");
-
-const querystring = require("querystring");
 
 const userList = require("../json/users.json");
 const questionList = require("../json/questions.json");
@@ -43,19 +40,6 @@ router.get("/addquestions", async (req, res) => {
   }
 });
 
-router.get("/minimsg", async (req, res) => {
-  // let subject = await Subject.find({ _id: req.user._id }, { friends: 1, _id: 0 });
-  let subject = await Subject.find({ _id: req.user._id });
-  // console.log(subject);
-  // try {
-  //   const result = await User.find(userList);
-  //   res.render("auth/profile", req.user);
-  // } catch (err) {
-  //   console.log(err);
-  // }
-});
-
-/* GET home page */
 router.get("/", (req, res) => res.render("index", { title: "Quester 🚀" }));
 
 // =========== AUTH SYSTEM  ===========
@@ -163,6 +147,7 @@ router.get("/logout", (req, res) => {
   req.session.destroy();
   res.redirect("/");
 });
+
 // =========== QUESTIONS SYSTEM  ===========
 router.get("/queryquestion", async (req, res) => {
   let subject = req.query.subject;
@@ -239,18 +224,37 @@ router.get("/queryquestion", async (req, res) => {
 });
 
 router.post("/queryquestion", async (req, res) => {
-  let { topic, question, correctAnswer, ...wrongAnswer } = req.body;
+  let { topic, id, question, correctAnswer, ...wrongAnswer } = req.body;
   wrongAnswer = wrongAnswer.wrongAnswer;
-  try {
-    const newQuestion = await Question.create({
-      topic,
-      question,
-      correctAnswer,
-      wrongAnswer,
-    });
-    res.redirect("/queryquestion");
-  } catch (err) {
-    console.error(err);
+  console.log("test");
+  console.log(req.body);
+  if (id) {
+    try {
+      const result = await Question.updateOne(
+        { _id: id },
+        {
+          topic,
+          question,
+          correctAnswer,
+          wrongAnswer,
+        }
+      );
+      res.redirect("/queryquestion");
+    } catch (err) {
+      console.error(err);
+    }
+  } else {
+    try {
+      const newQuestion = await Question.create({
+        topic,
+        question,
+        correctAnswer,
+        wrongAnswer,
+      });
+      res.redirect("/queryquestion");
+    } catch (err) {
+      console.error(err);
+    }
   }
 });
 
@@ -301,18 +305,18 @@ router.get("/editquestion", async (req, res) => {
 
   try {
     const requestResult = await Question.find({ _id: questionID });
+    console.log(requestResult);
     const {
       wrongAnswer,
       id,
       question,
       correctAnswer,
       ...trash
-    } = requestResult;
+    } = requestResult[0];
     let searchResult = await Subject.find({ topic: requestResult[0].topic });
     const subject = [searchResult[0].subject];
     const classs = [searchResult[0].classs];
     const topic = [searchResult[0].topic];
-
     res.render("questions/addQuestion", {
       subject,
       classs,
@@ -323,11 +327,6 @@ router.get("/editquestion", async (req, res) => {
       correctAnswer,
       myBool: true,
     });
-    // console.log(subject)
-    // console.log(classs)
-    // console.log(topic)
-    // res.redirect("queryquestion?" + query);
-    // res.redirect("/?" + query);
   } catch (err) {
     console.log(err);
   }
@@ -336,13 +335,13 @@ router.get("/editquestion", async (req, res) => {
 router.get("/deletequestion", async (req, res) => {
   let questionID = req.query.questionID;
   try {
-    // let result = await Question.deleteOne({ _id: questionID });
-    console.log(result);
-    res.redirect("questions/viewquestion");
+    let result = await Question.deleteOne({ _id: questionID });
+    res.redirect("viewquestion");
   } catch (err) {
     console.log(err);
   }
 });
+
 // =========== SUBJECT SYSTEM  ===========
 router.get("/querysubjects", async (req, res) => {
   let subject = req.query.subject;
@@ -444,19 +443,6 @@ router.get("/deletesubjects", async (req, res) => {
       console.error(err);
     }
   }
-});
-
-// =========== FRIENDS SYSTEM  ===========
-router.get("/addfriend", (req, res) => {
-  res.render("addFriend");
-});
-
-router.get("/developers", (req, res) => {
-  res.render("developers.hbs");
-});
-
-router.get("/about", (req, res) => {
-  res.render("about.hbs");
 });
 
 module.exports = router;
