@@ -2,7 +2,6 @@
 <html lang="en">
 
   <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,44 +9,44 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/style.css" />
     <script src="https://kit.fontawesome.com/e51ecd7475.js" crossorigin="anonymous"></script>
-
   </head>
             
   <body>
-    <div id="page-container">
-      <div id="content-wrap">
-          <nav>
-              <ul>
-                <li id="to-left">
-                  {{#if username}}
-                    <p><a href="/profile"> Profile </a></p>
-                    <p><a href="/profile">🚀 Quester  </a></p>
-                  {{else}}
-                    <p><a href="/"> Home </a></p>
-                    <p><a href="/profile">🚀 Quester  </a></p>
-                  {{/if}}
-                </li>
-                <li id="to-right">
-                  {{#if username}}
-                    <a href="/logout">Logout</a> <span> </span>
-                  {{else}}
-                    <a class="navButton" href="/signup">Signup</a> <span>   |   </span>
-                    <a class="navButton" href="/login">Login</a>
-                  {{/if}}
-                </li>
-              </ul>
-          </nav>
-
-          {{{body}}}
-      </div>
-      <footer id="sticky-footer" class="py-4 bg-dark text-white-50 footer">
-        <div class="container text-center footerDiv1 col-md">
-          <h5>Developed by:</h5>
-          <section class="devs">
-            
-            <div class="devs" >
-              <div class="person">
-                  <a href="/developers">Arthur Ferneze</a>
+    <div id="page-container" class="d-flex flex-column">
+          <div id="content-wrap">
+              <nav>
+                  <ul>
+                    <li id="to-left">
+                      {{#if username}}
+                        <p><a href="/profile"> Profile </a></p>
+                        <p><a href="/">🚀 Quester  </a></p>
+                      {{else}}
+                        <p><a href="/"> Home </a></p>
+                        <p><a href="/">🚀 Quester  </a></p>
+                      {{/if}}
+                    </li>
+                    <li id="to-right">
+                      {{#if username}}
+                        <a href="/logout">Logout</a> <span> </span>
+                      {{else}}
+                        <a class="navButton" href="/signup">Signup</a> <span>   |   </span>
+                        <a class="navButton" href="/login">Login</a>
+                      {{/if}}
+                    </li>
+                  </ul>
+              </nav>
+              
+              {{{body}}}
+          </div>
+          
+          <footer id="sticky-footer" class="py-4 bg-dark text-white-50 footer">
+            <div class="container text-center footerDiv1 col-md">
+              <h5>Developed by:</h5>
+              <section class="devs">
+                
+                <div class="devs" >
+                  <div class="person">
+                      <a href="/developers">Arthur Ferneze</a>
 
                   <div class="socialMedias" >
                     <a

@@ -2,7 +2,8 @@ body {
   padding: 50px 0 0;
   background-color: #f5f5f5;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  margin-bottom: 0 !important;
+
+  margin-bottom: 30px;
 }
 
 .radio {
@@ -172,11 +173,7 @@ ul li {
 
 footer {
   background-color: #343a40;
-  margin-top: 100px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  align-content: space-around;
+  margin-bottom: -100px;
 
   font-size: 9px;
 }
