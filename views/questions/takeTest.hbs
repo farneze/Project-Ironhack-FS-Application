@@ -1,0 +1,49 @@
+<h1>{{title}}</h1>
+
+  <p>id, topic, question, randomizedAnswers</p>
+
+<h3> Welcome to your test! Good luck!</h3>
+
+<form action="/taketest" method="POST">
+
+  {{#each testQuestions}}
+    <div class="question">
+        {{#if @index}}
+            <h4 class="ques">{{@index}}. {{this.question}}</h4>
+            <div class="form-check">
+                <input class="form-check-input radio" type="radio" name="{{this.id}}" id="1+{{this.id}}" value="{{this.randomizedAnswers.[1]}}">
+                <label class="form-check-label ques h5 text-left" for="1+{{this.id}}">
+                  {{this.randomizedAnswers.[1]}}
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input radio" type="radio" name="{{this.id}}" id="2+{{this.id}}" value="{{this.randomizedAnswers.[2]}}">
+                <label class="form-check-label ques h5 text-left" for="2+{{this.id}}">
+                  {{this.randomizedAnswers.[2]}}
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input radio" type="radio" name="{{this.id}}" id="3+{{this.id}}" value="{{this.randomizedAnswers.[3]}}">
+                <label class="form-check-label ques h5 text-left" for="3+{{this.id}}">
+                  {{this.randomizedAnswers.[3]}}
+                </label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input radio" type="radio" name="{{this.id}}" id="4+{{this.id}}" value="{{this.randomizedAnswers.[4]}}">
+                <label class="form-check-label ques h5 text-left" for="4+{{this.id}}">
+                  {{this.randomizedAnswers.[4]}}
+                </label>
+            </div>
+            
+        {{/if}}
+    </div>
+    {{/each}}
+
+  <div>
+    <button class="w-50" type="submit">Enviar</button>
+  </div>
+</form>
+
+
+
+  

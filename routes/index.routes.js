@@ -297,7 +297,6 @@ router.get("/searchquestions", async (req, res) => {
 
 router.get("/viewquestion", async (req, res) => {
   res.render("questions/viewQuestions"); //, { subject, classs, topic });
-  // console.log(req.body);
 });
 
 router.get("/editquestion", async (req, res) => {
@@ -305,7 +304,6 @@ router.get("/editquestion", async (req, res) => {
 
   try {
     const requestResult = await Question.find({ _id: questionID });
-    console.log(requestResult);
     const {
       wrongAnswer,
       id,
@@ -445,7 +443,79 @@ router.get("/deletesubjects", async (req, res) => {
   }
 });
 
+// =========== TEST SYSTEM  ===========
+router.get("/taketest", async (req, res) => {
+  const questions = await Question.find({});
+  const testQuestions = generateTest(questions, 10);
+  console.log({ testQuestions });
+  res.render("questions/takeTest", { testQuestions });
+});
+
+router.post("/taketest", async (req, res) => {
+  let testAnsw = req.body;
+  console.log(testAnsw);
+
+  rightWrong = [];
+
+  questID = Object.entries(testAnsw).map((el) => el[0]);
+
+  const requestResult = await Question.find(
+    { _id: questID },
+    { _id: 1, correctAnswer: 1 }
+  );
+  // serverAnsw
+  requestResult.forEach((el) => {
+    const { id, correctAnswer } = el;
+
+    testAnsw[id] == correctAnswer
+      ? rightWrong.push([id, true])
+      : rightWrong.push([id, false]);
+  });
+
+  console.log(rightWrong);
+});
+
+// router.post("/taketest", async (req, res) => {
+//   let myBody = Object.entries(req.body);
+//   myBody.forEach
+//   rightWrong = [];
+
+//   console.log(myBody);
+// });
+
 module.exports = router;
+
+function generateTest(questions, number) {
+  let testQuestions = [];
+  let quesLen = questions.length;
+
+  if (number > quesLen) {
+    number = quesLen;
+  }
+
+  [...new Array(number)].forEach((el, i) => {
+    let randIdx = Math.floor(Math.random() * (quesLen - i));
+    testQuestions.push(questions[randIdx]);
+    questions.splice(randIdx, 1);
+  });
+  return questionsRandomizer(testQuestions);
+}
+
+function questionsRandomizer(questions) {
+  let randQuestions = [];
+  questions.forEach((el) => {
+    let answers = [];
+    let { wrongAnswer, id, topic, question, correctAnswer, ...trash } = el;
+    wrongAnswer.forEach((el) => answers.push(el));
+    answers.push(correctAnswer);
+    let randomizedAnswers = randomizeAnswer(answers);
+    randomizedAnswers.unshift("");
+    let newQuestion = new Object({ id, topic, question, randomizedAnswers });
+    randQuestions.push(newQuestion);
+  });
+  randQuestions.unshift(new Object({}));
+  return randQuestions;
+}
 
 function randomizeAnswer(answers) {
   let randomIndex = [...new Array(4)].map((el, i) =>
@@ -458,3 +528,25 @@ function randomizeAnswer(answers) {
   });
   return randomAnswers;
 }
+// try {
+//   myBody.forEach(async (el, i) => {
+//     const requestResult = await Question.find({ _id: el[0] });
+//     const {
+//       wrongAnswer,
+//       id,
+//       question,
+//       correctAnswer,
+//       ...trash
+//     } = requestResult[0];
+//     console.log(el[1]);
+//     console.log(correctAnswer);
+
+//     el[1] == correctAnswer
+//       ? rightWrong.push([el[0], true])
+//       : rightWrong.push([el[0], false]);
+//   });
+//   console.log("rightWrong");
+//   console.log(rightWrong);
+// } catch (err) {
+//   console.log(err);
+// }
