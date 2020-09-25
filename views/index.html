@@ -20,108 +20,109 @@
 
   <body>
     <div id="page-container" class="d-flex flex-column">
-      <div id="content-wrap">
-        <nav>
-          <ul>
-            <li id="to-left">
-              {{#if username}}
-              <p><a href="/profile"> Perfil </a></p>
-              <p><a href="/">🚀 Quester </a></p>
-              {{else}}
-              <p><a href="/"> Home </a></p>
-              <p><a href="/">🚀 Quester </a></p>
-              {{/if}}
-            </li>
-            <li id="to-right">
-              {{#if username}}
-              <a href="/logout">Logout</a> <span> </span>
-              {{else}}
-              <a class="navButton" href="/signup">Signup</a> <span> | </span>
-              <a class="navButton" href="/login">Login</a>
-              {{/if}}
-            </li>
-          </ul>
-        </nav>
+      <nav id="content-wrap">
+        <ul>
+          <li id="to-left">
+            {{#if username}}
+            <p><a href="/profile"> Perfil </a></p>
+            <p><a href="/">🚀 Quester </a></p>
+            {{else}}
+            <p><a href="/"> Home </a></p>
+            <p><a href="/">🚀 Quester </a></p>
+            {{/if}}
+          </li>
+          <li id="to-right">
+            {{#if username}}
+            <a href="/logout">Logout</a> <span> </span>
+            {{else}}
+            <a class="navButton" href="/signup">Signup</a> <span> | </span>
+            <a class="navButton" href="/login">Login</a>
+            {{/if}}
+          </li>
+        </ul>
+      </nav>
 
+      <div class="bobody">
         {{{body}}}
       </div>
 
-      <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-        <div class="container text-center footerDiv1">
-          <h5>Developed by:</h5>
-          <section class="developersBlock">
-            <div class="person">
-              <a href="#">Arthur Ferneze</a>
+      <footer
+        id="sticky-footer"
+        class="py-4 bg-dark text-white-50 text-center footerDiv1"
+      >
+        <h5>Developed by:</h5>
+        <section class="developersBlock">
+          <div class="person">
+            <a href="#">Arthur Ferneze</a>
 
-              <div class="socialMedias">
-                <a
-                  href="https://www.instagram.com/artfarneze/"
-                  target="_blank"
-                  aria-label="Instagram"
-                  ><i class="fa fa-instagram" aria-hidden="true"></i
-                ></a>
-                <a
-                  href="https://twitter.com/ArthurFarneze"
-                  target="_blank"
-                  aria-label="Twitter"
-                  ><i class="fa fa-twitter" aria-hidden="true"></i
-                ></a>
-                <a
-                  href="https://www.facebook.com/arthur.farneze"
-                  target="_blank"
-                  aria-label="Facebook"
-                  ><i class="fa fa-facebook" aria-hidden="true"></i
-                ></a>
-                <a
-                  href="https://www.youtube.com/user/arthurfarneze"
-                  target="_blank"
-                  aria-label="Youtube"
-                  ><i class="fa fa-youtube" aria-hidden="true"></i
-                ></a>
-                <a
-                  href="https://github.com/farneze"
-                  target="_blank"
-                  aria-label="Github"
-                  ><i class="fa fa-github" aria-hidden="true"></i
-                ></a>
-              </div>
+            <div class="socialMedias">
+              <a
+                href="https://www.instagram.com/artfarneze/"
+                target="_blank"
+                aria-label="Instagram"
+                ><i class="fa fa-instagram" aria-hidden="true"></i
+              ></a>
+              <a
+                href="https://twitter.com/ArthurFarneze"
+                target="_blank"
+                aria-label="Twitter"
+                ><i class="fa fa-twitter" aria-hidden="true"></i
+              ></a>
+              <a
+                href="https://www.facebook.com/arthur.farneze"
+                target="_blank"
+                aria-label="Facebook"
+                ><i class="fa fa-facebook" aria-hidden="true"></i
+              ></a>
+              <a
+                href="https://www.youtube.com/user/arthurfarneze"
+                target="_blank"
+                aria-label="Youtube"
+                ><i class="fa fa-youtube" aria-hidden="true"></i
+              ></a>
+              <a
+                href="https://github.com/farneze"
+                target="_blank"
+                aria-label="Github"
+                ><i class="fa fa-github" aria-hidden="true"></i
+              ></a>
             </div>
+          </div>
 
-            <h5>and</h5>
+          <h5>and</h5>
 
-            <div class="person">
-              <a href="#">Yordan Christoff</a>
+          <div class="person">
+            <a href="#">Yordan Christoff</a>
 
-              <div class="socialMedias">
-                <a
-                  href="https://www.instagram.com/yordc"
-                  target="_blank"
-                  aria-label="Instagram"
-                  ><i class="fa fa-instagram" aria-hidden="true"></i
-                ></a>
-                <a
-                  href="https://twitter.com/Nadroy4"
-                  target="_blank"
-                  aria-label="Twitter"
-                  ><i class="fa fa-twitter" aria-hidden="true"></i
-                ></a>
-                <a
-                  href="https://www.facebook.com/yordancurt"
-                  target="_blank"
-                  aria-label="Facebook"
-                  ><i class="fa fa-facebook" aria-hidden="true"></i
-                ></a>
+            <div class="socialMedias">
+              <a
+                href="https://www.instagram.com/yordc"
+                target="_blank"
+                aria-label="Instagram"
+                ><i class="fa fa-instagram" aria-hidden="true"></i
+              ></a>
+              <a
+                href="https://twitter.com/Nadroy4"
+                target="_blank"
+                aria-label="Twitter"
+                ><i class="fa fa-twitter" aria-hidden="true"></i
+              ></a>
+              <a
+                href="https://www.facebook.com/yordancurt"
+                target="_blank"
+                aria-label="Facebook"
+                ><i class="fa fa-facebook" aria-hidden="true"></i
+              ></a>
 
-                <a
-                  href="https://github.com/yordancurty"
-                  target="_blank"
-                  aria-label="Github"
-                  ><i class="fa fa-github" aria-hidden="true"></i
-                ></a>
-              </div>
+              <a
+                href="https://github.com/yordancurty"
+                target="_blank"
+                aria-label="Github"
+                ><i class="fa fa-github" aria-hidden="true"></i
+              ></a>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </footer>
     </div>
     <script src="/javascripts/script.js"></script>

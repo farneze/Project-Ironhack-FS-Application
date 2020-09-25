@@ -36,9 +36,8 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
 </form>
 
 
-<div class="search">
-  <form action="/searchquestions" method="POST">
-    <a href="/searchquestions?show=true&subject={{subject}}&classs={{classs}}&topic={{topic}}" class="pb-2 mb-2 btn btn-info" role="button">Search</a>
+  <form class="center-button" action="/searchquestions" method="POST">
+    <a href="/searchquestions?show=true&subject={{subject}}&classs={{classs}}&topic={{topic}}" class="btn btn-info" role="button">Pesquisar</a>
     {{#if subject}}
             <input class="form-control invisible" name="subject" type="text" value="{{subject}}"></input>
     {{/if}}
@@ -49,15 +48,12 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
           <input class="form-control invisible" name="topic" type="text" value="{{topic}}"></input>
     {{/if}}
   </form>
-</div>
  
 <form action="/viewquestion" method="POST">
   {{#if myBool}} 
-      <h3 class=" question">{{questions.1.topic}}</h3>
+      <h3 class="invisible question">{{questions.1.topic}}</h3>
       {{> aPartialQuestion questions }}
   {{/if}}
-    
-  {{!-- <button type="submit">Enviar</button> --}}
 </form>
 
 

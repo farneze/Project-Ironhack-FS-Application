@@ -10,9 +10,11 @@
                 {{/if}}
             {{/each}}
             </ol>
-            <div>
-                <a href="/editquestion?questionID={{this.id}}" class="pb-2 mb-2 btn btn-info" role="button">Editar</a>
-                <a href="/deletequestion?questionID={{this.id}}" class="pb-2 mb-2 btn btn-info" role="button">Deletar</a>
+            <div class="center-button">
+                <div>
+                    <a href="/editquestion?questionID={{this.id}}" class="pb-2 mb-2 btn btn-info" role="button">Editar</a>
+                    <a href="/deletequestion?questionID={{this.id}}" class="pb-2 mb-2 btn btn-info" role="button">Deletar</a>
+                </div>
             </div>
         </div>
     {{/if}}

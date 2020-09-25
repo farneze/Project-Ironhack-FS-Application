@@ -8,27 +8,27 @@
     {{#if @index}}
       <div class="question">
             <h4 class="ques">{{@index}}. {{this.question}}</h4>
-            <div class="form-check">
+            <div class="form-check pl-6">
                 <input class="form-check-input radio" type="radio" name="{{this.id}}" id="1+{{this.id}}" value="{{this.randomizedAnswers.[1]}}">
-                <label class="form-check-label ques h5 text-left" for="1+{{this.id}}">
+                <label class="form-check-label ques radioques h5 text-left" for="1+{{this.id}}">
                   {{this.randomizedAnswers.[1]}}
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input radio" type="radio" name="{{this.id}}" id="2+{{this.id}}" value="{{this.randomizedAnswers.[2]}}">
-                <label class="form-check-label ques h5 text-left" for="2+{{this.id}}">
+                <label class="form-check-label ques radioques h5 text-left" for="2+{{this.id}}">
                   {{this.randomizedAnswers.[2]}}
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input radio" type="radio" name="{{this.id}}" id="3+{{this.id}}" value="{{this.randomizedAnswers.[3]}}">
-                <label class="form-check-label ques h5 text-left" for="3+{{this.id}}">
+                <label class="form-check-label ques radioques h5 text-left" for="3+{{this.id}}">
                   {{this.randomizedAnswers.[3]}}
                 </label>
             </div>
             <div class="form-check">
                 <input class="form-check-input radio" type="radio" name="{{this.id}}" id="4+{{this.id}}" value="{{this.randomizedAnswers.[4]}}">
-                <label class="form-check-label ques h5 text-left" for="4+{{this.id}}">
+                <label class="form-check-label ques radioques h5 text-left" for="4+{{this.id}}">
                   {{this.randomizedAnswers.[4]}}
                 </label>
             </div>
@@ -38,7 +38,7 @@
 
     {{/each}}
 
-  <div>
+  <div class="center-button">
     <button class="w-50" type="submit">Enviar Respostas</button>
   </div>
 </form>

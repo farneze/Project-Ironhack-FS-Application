@@ -5,20 +5,25 @@ body {
   margin-bottom: 30px;
 }
 
+.bobody {
+  margin-bottom: 50px;
+}
+
 .radio {
   width: auto !important;
 }
 
-.answer {
-  margin-left: 20px !important;
-  margin-right: 20px !important;
-}
 .test {
   margin-left: 6px !important;
   padding: 7px 8px 7px !important;
 }
 .drop-item {
   font-size: 18px;
+}
+
+.answer {
+  margin-left: 20px !important;
+  margin-right: 20px !important;
 }
 
 .question {
@@ -56,15 +61,19 @@ body {
 
 .ques {
   text-align: justify !important;
-  text-justify: inter-word !important;
 }
-.search {
-  margin: 0 !important;
-  border: 0 !important;
-  padding: 0 !important;
-  width: 0% !important;
-  height: 0% !important;
+.radioques {
+  padding-right: 35px !important;
 }
+.socorroJesus {
+  min-height: 700vh;
+}
+.center-button {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
 .form-check {
   margin: 1px 0;
   padding-left: 50px !important;
@@ -202,8 +211,10 @@ ul li {
 }
 
 #page-container {
-  position: relative;
-  min-height: 100vh;
+  display: flex !important;
+  flex-direction: column !important;
+  position: relative !important;
+  min-height: 100vh !important;
 }
 
 #content-wrap {
