@@ -9,6 +9,11 @@ body {
   width: auto !important;
 }
 
+.answer {
+  margin-left: 20px !important;
+  margin-right: 20px !important;
+}
+
 .question {
   margin: 20px auto 20px !important;
   padding: 25px 20px !important;

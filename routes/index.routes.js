@@ -445,34 +445,44 @@ router.get("/deletesubjects", async (req, res) => {
 
 // =========== TEST SYSTEM  ===========
 router.get("/taketest", async (req, res) => {
+  const questionQty = 10;
   const questions = await Question.find({});
-  const testQuestions = generateTest(questions, 10);
+  const testQuestions = generateTest(questions, questionQty);
   console.log({ testQuestions });
   res.render("questions/takeTest", { testQuestions });
 });
 
 router.post("/taketest", async (req, res) => {
   let testAnsw = req.body;
-  console.log(testAnsw);
 
-  rightWrong = [];
+  testIDlist = Object.keys(req.body);
+  const questionQty = testIDlist.length;
 
-  questID = Object.entries(testAnsw).map((el) => el[0]);
+  let testResults = [];
 
   const requestResult = await Question.find(
-    { _id: questID },
-    { _id: 1, correctAnswer: 1 }
+    { _id: testIDlist },
+    { _id: 1, correctAnswer: 1, question: 1 }
   );
-  // serverAnsw
-  requestResult.forEach((el) => {
-    const { id, correctAnswer } = el;
 
-    testAnsw[id] == correctAnswer
-      ? rightWrong.push([id, true])
-      : rightWrong.push([id, false]);
+  requestResult.forEach((el, i) => {
+    const { id, correctAnswer, question } = el;
+
+    let userAnswer = testAnsw[id];
+
+    userAnswer == correctAnswer
+      ? testResults.push([id, true, userAnswer, correctAnswer, question])
+      : testResults.push([id, false, userAnswer, correctAnswer, question]);
   });
 
-  console.log(rightWrong);
+  ordTestResults = [...new Array(questionQty)];
+
+  testResults.forEach((el) => {
+    let idx = testIDlist.indexOf(el[0]);
+    ordTestResults[idx] = el;
+  });
+  ordTestResults.unshift("");
+  res.render("questions/results", { ordTestResults });
 });
 
 module.exports = router;
