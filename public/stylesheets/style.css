@@ -13,6 +13,13 @@ body {
   margin-left: 20px !important;
   margin-right: 20px !important;
 }
+.test {
+  margin-left: 6px !important;
+  padding: 7px 8px 7px !important;
+}
+.drop-item {
+  font-size: 18px;
+}
 
 .question {
   margin: 20px auto 20px !important;
@@ -75,7 +82,7 @@ body {
 }
 
 a {
-  color: #00b7ff;
+  color: #43a3e6;
   text-decoration: none !important;
   font-size: 1.5em;
 }
@@ -154,7 +161,6 @@ ul li {
 }
 
 #to-right {
-  /* padding: 1em; */
   float: right;
   padding-right: 20px;
 }
@@ -205,40 +211,22 @@ ul li {
 }
 
 footer {
-  background-color: #343a40;
-  margin-bottom: -100px;
-
-  font-size: 9px;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
+  position: absolute !important;
+  bottom: 0 !important;
+  margin-bottom: -100px !important;
+  font-size: 9px !important;
   width: 100%;
-  /* height: 2.5rem;  */
-  background-color: #343a40;
-  height: 120px;
+  height: 120px !important;
 }
-
-/* .mainContent{
-  display: flex;
-  justify-content: center;
-} */
 
 .developersBlock {
   display: flex;
-  flex-direction: column;
-}
-
-.devs {
-  display: flex;
-  /* flex-direction: column; */
+  flex-direction: row;
 }
 
 .footerDiv1 {
   display: flex;
   flex-direction: column;
-  /* padding-left: 200px; */
   align-items: center;
 }
 
@@ -253,6 +241,5 @@ footer {
 .test {
   display: flex;
   flex-direction: column;
-  /* padding-left: 200px; */
   align-items: center !important;
 }

@@ -1,38 +1,38 @@
 <section class="jumbotron text-center">
-<h2>Welcome, {{ username }}!</h2>
-<h5>This is your profile page {{ nickname }}!</h5>
+<h2>Bem vindo, {{ username }}!</h2>
+<h5>Bons estudos {{ nickname }}!</h5>
 
 </section>
-<section>
+<section class="my-25%">
   <div class="w-25 container d-flex align-content-center justify-content-center">
 
     {{!-- // ======== Subjects ====== --}}
     <div class="dropdown show">
-      <a class="btn btn-outline-primary dropdown-toggle pb-2 mb-2 mx-2 px-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Subjects
+      <a class="btn btn-primary dropdown-toggle pb-2 mb-2 mx-2 px-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Assuntos
       </a>
 
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="/addeditsubjects">Add Subjects</a>
-        <a class="dropdown-item" href="/querysubjects">Show Subjects</a>
+      <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item drop-item" href="/addeditsubjects">Adicionar</a>
+        <a class="dropdown-item drop-item" href="/querysubjects">Visualizar</a>
       </div>
     </div>
 
     {{!-- // ======== Questions ====== --}}
-    <div class="dropdown show ">
-      <a class="btn btn-outline-primary dropdown-toggle pb-2 mb-2 mx-2 px-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Exercises
+    <div class="dropdown show">
+      <a class="btn btn-primary dropdown-toggle pb-2 mb-2 mx-2 px-2" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Questões
       </a>
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-        <a class="dropdown-item" href="/queryquestion">Write a brand new question</a>
-        <a class="dropdown-item" href="/queryquestion?show=true">View subject related questions</a>
+        <a class="dropdown-item drop-item" href="/queryquestion">Adicionar</a>
+        <a class="dropdown-item drop-item" href="/queryquestion?show=true">Visualizar</a>
       </div>
     </div>
 
     {{!-- // ======== Test ====== --}}
     <div>
-      <a class="btn btn-primary" href="/taketest" >Take Test</a>
+      <nobr><a class="btn btn-primary test" href="/taketest">Fazer um teste</a></nobr>
     </div>
     
 

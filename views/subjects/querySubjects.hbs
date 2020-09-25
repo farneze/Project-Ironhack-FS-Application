@@ -4,7 +4,6 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
 {{!-- <script src="../../js/test.js"></script> --}}
 
 <h1>{{title}}</h1>
-<p>Please, enter the required data bellow in each field to create a new question in the questions database</p>
 
 <form class="question" action="/querysubjects" method="GET">
 
@@ -33,7 +32,7 @@ necessárias e enviará como metodo "post" para o indexRoutes --}}
 
 
   </div>
-  <a href="/querysubjects" class="pb-2 mb-2 btn btn-info" role="button">Reload</a>
+  <a href="/querysubjects" class="pb-2 mb-2 btn btn-info" role="button">Recarregar</a>
   {{#if myBool}}
         <a href="/addeditsubjects?subject={{subject}}&classs={{classs}}&topic={{topic}}" class="pb-2 mb-2 btn btn-info" role="button">Edit</a>
         <a href="/deletesubjects?subject={{subject}}&classs={{classs}}&topic={{topic}}" class="pb-2 mb-2 btn btn-info" role="button">Dew IT</a>
